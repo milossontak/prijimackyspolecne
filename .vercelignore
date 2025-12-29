@@ -1,0 +1,23 @@
+# Vercel ignore file
+# Soubory, které se nebudou nahrávat na Vercel
+
+# Dokumentace
+*.md
+!README.md
+
+# Development files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
