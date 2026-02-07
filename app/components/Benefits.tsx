@@ -1,28 +1,15 @@
 import { HeartIcon, ShieldCheckIcon, TargetIcon } from './Icons'
+import { siteContent } from '../content/site'
+
+const icons = [HeartIcon, ShieldCheckIcon, TargetIcon]
 
 export default function Benefits() {
-  const benefits = [
-    {
-      icon: HeartIcon,
-      title: 'Odbourání stresu',
-      description: 'Dítě ví, co ho čeká, a není překvapené. Reálná simulace přijímaček odstraňuje nejistotu a strach z neznámého. Připraví se v klidu a s jistotou.'
-    },
-    {
-      icon: ShieldCheckIcon,
-      title: 'Jistota výsledku',
-      description: 'Vidíte přesně, jak na tom vaše dítě je. Každý test přinese jasná data o pokroku, silných a slabých stránkách. Žádné dohady, jen fakta.'
-    },
-    {
-      icon: TargetIcon,
-      title: 'Reálná simulace',
-      description: 'Testy probíhají v identických podmínkách jako skutečné přijímačky. Stejný čas, stejné typy úloh, stejná atmosféra. Dítě bude vědět, co ho čeká.'
-    }
-  ]
+  const { title, items: benefits } = siteContent.benefits
 
   return (
     <section className="section section-alt">
       <div className="container">
-        <h2 className="text-center">Proč Přijímačky Společně?</h2>
+        <h2 className="text-center">{title}</h2>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -30,7 +17,7 @@ export default function Benefits() {
           marginTop: 'var(--spacing-xl)',
         }}>
           {benefits.map((benefit, index) => {
-            const IconComponent = benefit.icon
+            const IconComponent = icons[index]
             return (
               <div key={index} className="card">
                 <div style={{

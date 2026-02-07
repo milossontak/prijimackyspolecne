@@ -1,28 +1,15 @@
 import { SelectIcon, DocumentIcon, ChartIcon } from './Icons'
+import { siteContent } from '../content/site'
+
+const icons = [SelectIcon, DocumentIcon, ChartIcon]
 
 export default function HowItWorks() {
-  const steps = [
-    {
-      icon: SelectIcon,
-      title: 'Vyberte si test',
-      description: 'Vyberte si balíček testů - komplexní balíček 25 testů nebo balíček 5 testů. U komplexního balíčku si můžete pro každý test zvolit, zda ho absolvujete online nebo osobně.'
-    },
-    {
-      icon: DocumentIcon,
-      title: 'Dítě absolvuje test',
-      description: 'Test probíhá v reálných podmínkách - stejný časový limit a typy úloh jako u skutečných přijímaček.'
-    },
-    {
-      icon: ChartIcon,
-      title: 'Získáte detailní zpětnou vazbu',
-      description: 'Okamžité vyhodnocení, video s vysvětlením každé úlohy a porovnání s ostatními studenty vám ukáže, kde je potřeba přidat.'
-    }
-  ]
+  const { title, steps } = siteContent.howItWorks
 
   return (
     <section className="section">
       <div className="container">
-        <h2 className="text-center">Jak připravíme vaše dítě na přijímačky</h2>
+        <h2 className="text-center">{title}</h2>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -30,7 +17,7 @@ export default function HowItWorks() {
           marginTop: 'var(--spacing-xl)',
         }}>
           {steps.map((step, index) => {
-            const IconComponent = step.icon
+            const IconComponent = icons[index]
             return (
               <div key={index} className="card" style={{ textAlign: 'center' }}>
                 <div style={{

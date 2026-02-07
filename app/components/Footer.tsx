@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import Logo from './Logo'
+import { siteContent } from '../content/site'
+
+const { footer } = siteContent
 
 export default function Footer() {
   return (
@@ -17,11 +20,11 @@ export default function Footer() {
           marginBottom: 'var(--spacing-xl)',
         }}>
           <div>
-            <Link href="/" style={{ textDecoration: 'none', display: 'inline-block', marginBottom: 'var(--spacing-md)' }}>
-              <Logo size={36} textColor="white" />
-            </Link>
+            <div style={{ marginBottom: 'var(--spacing-md)' }}>
+              <Logo size={44} />
+            </div>
             <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.95rem' }}>
-              Pomáháme dětem zvládnout přijímací zkoušky s klidem a jistotou.
+              {footer.tagline}
             </p>
           </div>
           <div>
@@ -44,8 +47,8 @@ export default function Footer() {
           <div>
             <h4 style={{ color: 'white', marginBottom: 'var(--spacing-md)' }}>Kontakt</h4>
             <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.95rem' }}>
-              Email: info@prijimacky-spolecne.cz<br />
-              Telefon: +420 737 827 230
+              Email: {footer.email}<br />
+              Telefon: {footer.phone}
             </p>
           </div>
         </div>
@@ -56,7 +59,7 @@ export default function Footer() {
           color: 'rgba(255, 255, 255, 0.6)',
           fontSize: '0.9rem',
         }}>
-          © 2026 Přijímačky Společně. Všechna práva vyhrazena.
+          {footer.copyright}
         </div>
       </div>
     </footer>

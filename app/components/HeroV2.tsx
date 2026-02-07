@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { siteContent } from '../content/site'
 
-const content = siteContent.hero
+const content = siteContent.heroV2
 
-export default function Hero() {
+export default function HeroV2() {
   return (
     <section style={{
       background: 'linear-gradient(135deg, #4A90E2 0%, #52C9A2 100%)',
@@ -64,4 +64,3 @@ export default function Hero() {
     </section>
   )
 }
-

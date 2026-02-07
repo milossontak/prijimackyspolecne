@@ -8,7 +8,7 @@ interface FAQItem {
   answer: string
 }
 
-export default function FAQ({ items }: { items: FAQItem[] }) {
+export default function FAQ({ title = 'Často kladené otázky', items }: { title?: string; items: readonly FAQItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const toggle = (index: number) => {
@@ -18,7 +18,7 @@ export default function FAQ({ items }: { items: FAQItem[] }) {
   return (
     <section className="section">
       <div className="container">
-        <h2 className="text-center">Často kladené otázky</h2>
+        <h2 className="text-center">{title}</h2>
         <div style={{
           maxWidth: '800px',
           margin: 'var(--spacing-xl) auto 0',

@@ -1,32 +1,12 @@
-export default function Testimonials() {
-  const testimonials = [
-    {
-      text: "Syn byl před testy ve velkém stresu. Díky Přijímačkám Společně věděl přesně, co ho čeká, a šel na přijímačky s klidem. Úspěšně se dostal na obě školy, kam se hlásil.",
-      author: "Jana Nováková",
-      location: "Praha"
-    },
-    {
-      text: "Jako rodič jsem ocenila hlavně to, že jsem viděla reálný pokrok dcery. Videa s vysvětlením byly skvělé - dcera pochopila, kde dělala chyby a jak se zlepšit.",
-      author: "Martina Svobodová",
-      location: "Brno"
-    },
-    {
-      text: "Osobní testy nanečisto byly přesně to, co dcera potřebovala. Atmosféra byla stejná jako u přijímaček, takže pak už nebyla nervózní. Doporučuji všem rodičům.",
-      author: "Petr Dvořák",
-      location: "Ostrava"
-    }
-  ]
+import { siteContent } from '../content/site'
 
-  const stats = [
-    { number: "500+", label: "úspěšných studentů" },
-    { number: "95%", label: "spokojenost rodičů" },
-    { number: "98%", label: "úspěšnost u přijímaček" }
-  ]
+export default function Testimonials() {
+  const { title, items: testimonials, stats } = siteContent.testimonials
 
   return (
     <section className="section">
       <div className="container">
-        <h2 className="text-center">Rodiče nám důvěřují</h2>
+        <h2 className="text-center">{title}</h2>
         
         <div style={{
           display: 'grid',

@@ -16,9 +16,7 @@ export default function Header() {
         alignItems: 'center',
         padding: '1rem 1.5rem',
       }}>
-        <Link href="/" style={{ textDecoration: 'none' }}>
-          <Logo size={40} />
-        </Link>
+        <Logo size={52} />
         <nav style={{
           display: 'flex',
           gap: '2rem',
