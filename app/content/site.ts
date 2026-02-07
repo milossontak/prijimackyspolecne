@@ -1,14 +1,11 @@
 /**
- * Centrální zdroj všech editovatelných textů webu.
- * Při přidání administrace (Sanity, Strapi, vlastní API) stačí nahradit
- * import tohoto souboru za načítání z API – komponenty už texty berou odsud.
+ * Statický obsah pro fallback a development
+ * V produkci se nahrazuje daty z API
  */
-
 export const siteContent = {
   metadata: {
     title: 'Přijímačky Společně - Přijímačky bez stresu',
-    description:
-      'Pomáháme dětem zvládnout přijímací zkoušky na střední školy i gymnázia z 5. třídy s klidem. Realistické testy nanečisto s okamžitou zpětnou vazbou a videem.',
+    description: 'Pomáháme dětem zvládnout přijímací zkoušky na střední školy i gymnázia z 5. třídy s klidem. Realistické testy nanečisto s okamžitou zpětnou vazbou a videem.',
   },
 
   hero: {
@@ -28,78 +25,85 @@ export const siteContent = {
       'Chcete mít přijímačky na střední školy bez stresu? Využijte naši reálnou přípravu, která vám dá jistotu.',
     paragraphs: [
       'Pomůžeme studentům z 9. tříd zvládnout přijímací zkoušky na střední školy i gymnázia s klidem.',
-      'Realistické testy nanečisto s rychlou zpětnou vazbou a videem, které příklady vysvětlí. Navedeme vás, kde je potřeba přidat.',
-      'V průběhu přípravy vysvětlíme, co studenty čeká, a vy budete vědět, že jste připraveni.',
+      'Naše realistické testy nanečisto poskytují přesnou představu o tom, co žáky čeká u skutečných přijímaček.',
+      'Díky okamžité zpětné vazbě a videím s vysvětlením budou studenti vědět, na co se zaměřit a jak si správně připravit.',
+      'Každý den se počítá – začněte s námi ještě dnes!',
     ],
     ctaPrimary: 'Vyzkoušejte zdarma',
     ctaSecondary: 'Zobrazit služby',
   },
 
   howItWorks: {
-    title: 'Jak připravíme vaše dítě na přijímačky',
+    title: 'Jak to funguje',
     steps: [
       {
-        title: 'Vyberte si test',
-        description:
-          'Vyberte si balíček testů - komplexní balíček 25 testů nebo balíček 5 testů. U komplexního balíčku si můžete pro každý test zvolit, zda ho absolvujete online nebo osobně.',
+        title: 'Vyberte si službu',
+        description: 'Zvolte si z naší nabídky testů nanečisto nebo individuální přípravy přesně podle potřeb Vašeho dítěte.',
       },
       {
-        title: 'Dítě absolvuje test',
-        description:
-          'Test probíhá v reálných podmínkách - stejný časový limit a typy úloh jako u skutečných přijímaček.',
+        title: 'Objednejte se jednoduše online',
+        description: 'Přesně podle Vaší volby. Vyberte si termín, uveďte své údaje a potvrďte objednávku – během chvíle Vám přijde email s potvrzením.',
       },
       {
-        title: 'Získáte detailní zpětnou vazbu',
-        description:
-          'Okamžité vyhodnocení, video s vysvětlením každé úlohy a porovnání s ostatními studenty vám ukáže, kde je potřeba přidat.',
+        title: 'Připravte se na přijímačky bez stresu',
+        description: 'Naše testy jsou vytvořeny přesně podle zadání Cermat a jsou doplněny videem s detailním vysvětlením jednotlivých úloh.',
       },
     ],
   },
 
   benefits: {
-    title: 'Proč Přijímačky Společně?',
+    title: 'Proč zvolit Přijímačky Společně',
     items: [
       {
-        title: 'Odbourání stresu',
-        description:
-          'Dítě ví, co ho čeká, a není překvapené. Reálná simulace přijímaček odstraňuje nejistotu a strach z neznámého. Připraví se v klidu a s jistotou.',
+        title: 'Testy podle skutečných přijímaček',
+        description: 'Naše testy nanečisto jsou vytvářeny přesně podle Cermat zadání z minulých let.',
       },
       {
-        title: 'Jistota výsledku',
-        description:
-          'Vidíte přesně, jak na tom vaše dítě je. Každý test přinese jasná data o pokroku, silných a slabých stránkách. Žádné dohady, jen fakta.',
+        title: 'Video s detailním vysvětlením každé úlohy',
+        description: 'Ke každé úloze v testu je připraveno video, kde lektor vysvětluje správné řešení, ukazuje postup krok za krokem a upozorňuje na časté chyby.',
       },
       {
-        title: 'Reálná simulace',
-        description:
-          'Testy probíhají v identických podmínkách jako skutečné přijímačky. Stejný čas, stejné typy úloh, stejná atmosféra. Dítě bude vědět, co ho čeká.',
+        title: 'Okamžitá a podrobná zpětná vazba',
+        description: 'Po dokončení testu obdržíte okamžitou zpětnou vazbu – výsledky v procentech, správné odpovědi a porovnání s ostatními studenty.',
+      },
+      {
+        title: 'Benchmark porovnání s ostatními',
+        description: 'Zjistěte, jak si Vaše dítě stojí v porovnání s ostatními studenty a kde má rezervy.',
+      },
+      {
+        title: 'Konkrétní doporučení pro další přípravu',
+        description: 'Na základě výsledků dostanete konkrétní tipy, na co se zaměřit v další přípravě, aby výsledky byly co nejlepší.',
+      },
+      {
+        title: 'Přístup k výsledkům kdykoliv a kdekoliv',
+        description: 'Všechny výsledky a videa jsou dostupná v klientské sekci, ke které máte přístup 24/7 z pohodlí domova.',
       },
     ],
   },
 
   testimonials: {
-    title: 'Rodiče nám důvěřují',
+    title: 'Co říkají naši zákazníci',
     items: [
       {
-        text: 'Syn byl před testy ve velkém stresu. Díky Přijímačkám Společně věděl přesně, co ho čeká, a šel na přijímačky s klidem. Úspěšně se dostal na obě školy, kam se hlásil.',
-        author: 'Jana Nováková',
-        location: 'Praha',
+        name: 'Jana Nováková',
+        content: 'Díky vašim testům moje dcera zvládla přijímačky na první pokus. Video vysvětlení úloh byly naprosto skvělé!',
+        role: 'Matka, Praha',
       },
       {
-        text: 'Jako rodič jsem ocenila hlavně to, že jsem viděla reálný pokrok dcery. Videa s vysvětlením byly skvělé - dcera pochopila, kde dělala chyby a jak se zlepšit.',
-        author: 'Martina Svobodová',
-        location: 'Brno',
+        name: 'Petr Svoboda',
+        content: 'Skvělá příprava, klidný přístup a hlavně reálné testy. Syn byl nadšený a výsledky mluví za vše.',
+        role: 'Otec, Brno',
       },
       {
-        text: 'Osobní testy nanečisto byly přesně to, co dcera potřebovala. Atmosféra byla stejná jako u přijímaček, takže pak už nebyla nervózní. Doporučuji všem rodičům.',
-        author: 'Petr Dvořák',
-        location: 'Ostrava',
+        name: 'Eva Dvořáková',
+        content: 'Cenově dostupné a efektivní. Doporučuji všem rodičům, kteří chtějí mít jistotu, že jsou děti dobře připravené.',
+        role: 'Matka, Ostrava',
       },
     ],
     stats: [
-      { number: '500+', label: 'úspěšných studentů' },
-      { number: '95%', label: 'spokojenost rodičů' },
-      { number: '98%', label: 'úspěšnost u přijímaček' },
+      { number: '95%', label: 'úspěšnost u přijímaček' },
+      { number: '500+', label: 'spokojených zákazníků' },
+      { number: '4.8/5', label: 'hodnocení spokojenosti' },
     ],
   },
 
@@ -107,39 +111,46 @@ export const siteContent = {
     title: 'Často kladené otázky',
     items: [
       {
-        question: 'Na jaké typy přijímaček se můžeme připravit?',
-        answer:
-          'Nabízíme přípravu na přijímací zkoušky na střední školy (z 9. třídy) i na gymnázia z 5. třídy. Testy pokrývají všechny typy úloh, které se u přijímaček objevují.',
+        question: 'Jaké jsou rozdíly mezi jednotlivými typy testů?',
+        answer: 'Nabízíme několik typů testů: online testy pro domácí přípravu, osobní testy s lektorem a komplexní balíčky s více testy. Každý typ má své specifické výhody podle potřeb Vašeho dítěte.',
       },
       {
-        question: 'Jak dlouho trvá test?',
-        answer:
-          'Test trvá stejně dlouho jako skutečné přijímací zkoušky - obvykle 60-70 minut pro matematiku a 60-70 minut pro český jazyk. Můžete si vybrat, zda test absolvujete online nebo osobně.',
+        question: 'Jak dlouho trvá vyhodnocení testu?',
+        answer: 'Online testy jsou vyhodnoceny okamžitě po dokončení. Osobní testy vyhodnocujeme do 24 hodin a zasíláme Vám podrobnou zpětnou vazbu.',
       },
       {
-        question: 'Kdy dostaneme výsledky?',
-        answer:
-          'Výsledky online testů jsou k dispozici okamžitě po dokončení. U osobních testů nanečisto obdržíte výsledky do 24 hodin. Součástí jsou vždy video vysvětlení a benchmark.',
+        question: 'Mohu si zakoupit více testů najednou?',
+        answer: 'Ano, nabízíme balíčky 3 nebo 5 testů, které cenově vycházejí výhodněji. Všechny testy v balíčku můžete využít kdykoliv v průběhu přípravy.',
       },
       {
-        question: 'Mohu si vybrat mezi online a osobním testem?',
-        answer:
-          'Ano, u komplexního balíčku 25 testů si můžete pro každý test zvolit, zda ho absolvujete online nebo osobně. U balíčku 5 testů jsou testy dostupné online.',
+        question: 'Co když se nám termín nehodí?',
+        answer: 'Osobní testy můžete přesunout až 48 hodin předem bez poplatku. Online testy můžete absolvovat kdykoliv Vám to vyhovuje.',
       },
       {
-        question: 'Jak funguje benchmark?',
-        answer:
-          'Benchmark porovnává výsledky vašeho dítěte s ostatními studenty, kteří absolvovali stejný test. Uvidíte percentilové zařazení a zjistíte, jak si dítě stojí v rámci celé skupiny.',
+        question: 'Jak se dostanu k videím s vysvětlením?',
+        answer: 'Po zakoupení testu obdržíte přístupové údaje do klientské sekce, kde najdete všechna videa, výsledky testů a další materiály k přípravě.',
       },
     ],
   },
 
-  footer: {
-    tagline: 'Pomáháme dětem zvládnout přijímací zkoušky s klidem a jistotou.',
-    email: 'info@prijimackyspolecne.cz',
-    phone: '+420 737 827 230',
-    copyright: '© 2026 Přijímačky Společně. Všechna práva vyhrazena.',
+  navigation: {
+    items: [
+      { label: 'Domů', href: '/' },
+      { label: 'Služby', href: '/sluzby' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Kontakt', href: '/kontakt' },
+    ],
   },
-} as const
 
-export type SiteContent = typeof siteContent
+  footer: {
+    tagline: 'Přijímačky Společně - Vaše cesta k úspěchu',
+    email: 'info@prijimacky-spolecne.cz',
+    phone: '+420 608 778 823',
+    copyright: '© 2024 Přijímačky Společně. Všechna práva vyhrazena.',
+  },
+
+  services: {
+    mainTitle: 'Vyberte si službu na míru',
+    mainDescription: 'Každé dítě je jiné. Proto nabízíme různé typy přípravy, aby si každý mohl vybrat tu nejlepší variantu pro své potřeby.',
+  },
+}

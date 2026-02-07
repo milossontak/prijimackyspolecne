@@ -1,9 +1,16 @@
 import Link from 'next/link'
-import { siteContent } from '../content/site'
-
-const content = siteContent.hero
+import { useContent } from '../hooks/useContent'
 
 export default function Hero() {
+  const { content } = useContent()
+  
+  const heroContent = content?.hero || {
+    h1: 'Přijímačky Společně',
+    paragraphs: ['Vítejte'],
+    ctaPrimary: 'Vyzkoušejte zdarma',
+    ctaSecondary: 'Zobrazit služby'
+  }
+
   return (
     <section style={{
       padding: 'var(--spacing-2xl) 0',
@@ -20,15 +27,15 @@ export default function Hero() {
             marginBottom: 'var(--spacing-lg)',
             fontSize: 'clamp(2rem, 5vw, 3.5rem)',
           }}>
-            {content.h1}
+            {heroContent.h1}
           </h1>
           <div style={{
             fontSize: '1.25rem',
             lineHeight: 1.7,
             marginBottom: 'var(--spacing-xl)',
           }}>
-            {content.paragraphs.map((p, i) => (
-              <p key={i} style={{ marginBottom: i < content.paragraphs.length - 1 ? 'var(--spacing-md)' : 0 }}>
+            {heroContent.paragraphs?.map((p: string, i: number) => (
+              <p key={i} style={{ marginBottom: i < (heroContent.paragraphs?.length || 0) - 1 ? 'var(--spacing-md)' : 0 }}>
                 {p}
               </p>
             ))}
@@ -40,10 +47,10 @@ export default function Hero() {
             flexWrap: 'wrap',
           }}>
             <Link href="/ukazkovy-test" className="btn btn-primary btn-large">
-              {content.ctaPrimary}
+              {heroContent.ctaPrimary}
             </Link>
             <Link href="/sluzby" className="btn btn-secondary btn-large">
-              {content.ctaSecondary}
+              {heroContent.ctaSecondary}
             </Link>
           </div>
         </div>
@@ -51,4 +58,3 @@ export default function Hero() {
     </section>
   )
 }
-

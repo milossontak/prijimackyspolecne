@@ -21,6 +21,8 @@ export default function Logo({ size = 40, asLink = true, className }: LogoProps)
       style={{
         display: 'inline-block',
         lineHeight: 0,
+        height: `${height}px`,
+        width: `${width}px`,
       }}
     >
       <Image
@@ -30,12 +32,9 @@ export default function Logo({ size = 40, asLink = true, className }: LogoProps)
         height={height}
         unoptimized
         style={{
-          height: `${height}px`,
-          width: 'auto',
-          maxWidth: '100%',
+          width: '100%',
+          height: '100%',
           objectFit: 'contain',
-          display: 'block',
-          verticalAlign: 'middle',
         }}
         priority
       />

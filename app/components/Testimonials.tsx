@@ -1,12 +1,19 @@
-import { siteContent } from '../content/site'
+import Link from 'next/link'
+import { useContent } from '../hooks/useContent'
 
 export default function Testimonials() {
-  const { title, items: testimonials, stats } = siteContent.testimonials
+  const { content } = useContent()
+  
+  const testimonialsData = content?.testimonials || {
+    title: 'Reference',
+    items: [],
+    stats: []
+  }
 
   return (
     <section className="section">
       <div className="container">
-        <h2 className="text-center">{title}</h2>
+        <h2>{testimonialsData.title}</h2>
         
         <div style={{
           display: 'grid',
@@ -15,16 +22,16 @@ export default function Testimonials() {
           marginTop: 'var(--spacing-xl)',
           marginBottom: 'var(--spacing-xl)',
         }}>
-          {testimonials.map((testimonial, index) => (
+          {testimonialsData.items.map((testimonial: any, index: number) => (
             <div key={index} className="card">
               <p style={{ fontStyle: 'italic', marginBottom: 'var(--spacing-md)' }}>
-                "{testimonial.text}"
+                "{testimonial.content}"
               </p>
               <div style={{ fontWeight: 600 }}>
-                {testimonial.author}
+                {testimonial.name}
               </div>
               <div style={{ color: 'var(--color-text-gray)', fontSize: '0.9rem' }}>
-                {testimonial.location}
+                {testimonial.role}
               </div>
             </div>
           ))}
@@ -36,13 +43,13 @@ export default function Testimonials() {
           gap: 'var(--spacing-lg)',
           marginTop: 'var(--spacing-xl)',
         }}>
-          {stats.map((stat, index) => (
+          {testimonialsData.stats.map((stat: any, index: number) => (
             <div key={index} style={{ textAlign: 'center' }}>
               <div style={{
-                fontSize: '3rem',
+                fontSize: '2rem',
                 fontWeight: 700,
                 color: 'var(--color-primary)',
-                marginBottom: 'var(--spacing-xs)',
+                marginBottom: 'var(--spacing-sm)',
               }}>
                 {stat.number}
               </div>
@@ -56,4 +63,3 @@ export default function Testimonials() {
     </section>
   )
 }
-

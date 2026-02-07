@@ -2,14 +2,23 @@
 
 import { useState } from 'react'
 import { ChevronDownIcon } from './Icons'
+import { useContent } from '../hooks/useContent'
 
 interface FAQItem {
   question: string
   answer: string
 }
 
-export default function FAQ({ title = 'Často kladené otázky', items }: { title?: string; items: readonly FAQItem[] }) {
+export default function FAQ({ title: propTitle, items: propItems }: { title?: string; items?: FAQItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const { content } = useContent()
+  
+  const faqData = content?.faq || {
+    title: propTitle || 'Často kladené otázky',
+    items: propItems || []
+  }
+
+  const faqItems = propItems || faqData.items
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index)
@@ -18,12 +27,12 @@ export default function FAQ({ title = 'Často kladené otázky', items }: { titl
   return (
     <section className="section">
       <div className="container">
-        <h2 className="text-center">{title}</h2>
+        <h2 className="text-center">{faqData.title}</h2>
         <div style={{
           maxWidth: '800px',
           margin: 'var(--spacing-xl) auto 0',
         }}>
-          {items.map((item, index) => (
+          {faqItems.map((item, index) => (
             <div
               key={index}
               className="card"
@@ -67,4 +76,3 @@ export default function FAQ({ title = 'Často kladené otázky', items }: { titl
     </section>
   )
 }
-

@@ -4,7 +4,10 @@ import { siteContent } from '../content/site'
 const icons = [SelectIcon, DocumentIcon, ChartIcon]
 
 export default function HowItWorks() {
-  const { title, steps } = siteContent.howItWorks
+  const { title, steps = [] } = siteContent.howItWorks || {
+    title: 'Jak to funguje',
+    steps: []
+  }
 
   return (
     <section className="section">

@@ -1,10 +1,15 @@
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
 import FAQ from '@/app/components/FAQ'
-import { CheckIcon } from '@/app/components/Icons'
+import Breadcrumb from '@/app/components/Breadcrumb'
+import TestFeatures from '@/app/components/TestFeatures'
+import ProcessSteps from '@/app/components/ProcessSteps'
+import TestPackages from '@/app/components/TestPackages'
+import CallToAction from '@/app/components/CallToAction'
 import Link from 'next/link'
 
-const includedFeatures = [
+// Data extracted to separate constants for better maintainability
+const testFeatures = [
   {
     title: 'Realistický test nanečisto',
     description: 'Stejné typy úloh jako u skutečných přijímaček'
@@ -31,7 +36,7 @@ const includedFeatures = [
   }
 ]
 
-const processSteps = [
+const processData = [
   {
     step: '1',
     title: 'Registrace a přihlášení',
@@ -59,12 +64,11 @@ const processSteps = [
   }
 ]
 
-const packages = [
+const testPackages = [
   {
     name: 'Jeden test',
     tests: 1,
     price: 490,
-    originalPrice: null,
     features: [
       '1x test nanečisto',
       'Video vysvětlení',
@@ -101,7 +105,7 @@ const packages = [
   }
 ]
 
-const faqItems = [
+const faqData = [
   {
     question: 'Jak dlouho mám přístup k testu?',
     answer: 'Po zakoupení máte neomezený přístup k testu. Můžete ho absolvovat vícekrát a všechny výsledky a videa jsou dostupné v klientské sekci.'
@@ -116,287 +120,101 @@ const faqItems = [
   }
 ]
 
+const breadcrumbItems = [
+  { label: 'Domů', href: '/' },
+  { label: 'Služby', href: '/sluzby' },
+  { label: 'Online testy' }
+]
+
 export default function OnlineTestyPage() {
   return (
     <>
       <Header />
       
-      {/* Breadcrumbs */}
-      <div className="container" style={{ paddingTop: 'var(--spacing-lg)', paddingBottom: 'var(--spacing-sm)' }}>
-        <nav style={{ fontSize: '0.9rem', color: 'var(--color-text-gray)' }}>
-          <Link href="/">Domů</Link> {' > '}
-          <Link href="/sluzby">Služby</Link> {' > '}
-          <span>Online testy</span>
-        </nav>
-      </div>
-
-      {/* Hero */}
-      <section style={{
-        background: 'linear-gradient(135deg, #4A90E2 0%, #52C9A2 100%)',
-        color: 'white',
-        padding: 'var(--spacing-2xl) 0',
-      }}>
-        <div className="container">
-          <h1 style={{ color: 'white', marginBottom: 'var(--spacing-md)' }}>
-            Online testy - Připravte se odkudkoliv a kdykoliv
-          </h1>
-          <p style={{
-            fontSize: '1.25rem',
-            marginBottom: 'var(--spacing-lg)',
-            color: 'rgba(255, 255, 255, 0.95)',
-          }}>
-            Realistické testy nanečisto s okamžitým vyhodnocením. Každý test obsahuje video s vysvětlením každé úlohy a porovnání s ostatními studenty. Ideální pro systematickou přípravu v pohodlí domova.
-          </p>
-          <div style={{
-            fontSize: '2.5rem',
-            fontWeight: 700,
-            marginBottom: 'var(--spacing-lg)',
-          }}>
-            od 490 Kč
-          </div>
-          <button className="btn btn-primary btn-large" style={{
-            backgroundColor: 'white',
-            color: 'var(--color-primary)',
-          }}>
-            Koupit nyní
-          </button>
+      <main id="main-content">
+        {/* Breadcrumbs */}
+        <div className="container" style={{ paddingTop: 'var(--spacing-lg)', paddingBottom: 'var(--spacing-sm)' }}>
+          <Breadcrumb items={breadcrumbItems} />
         </div>
-      </section>
 
-      {/* Co je zahrnuto */}
-      <section className="section">
-        <div className="container">
-          <h2>Co je součástí testu</h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: 'var(--spacing-lg)',
-          }}>
-            {includedFeatures.map((feature, index) => (
-              <div key={index} style={{
-                display: 'flex',
-                gap: 'var(--spacing-md)',
-                alignItems: 'flex-start',
-              }}>
-                <div style={{
-                  color: 'var(--color-secondary)',
-                  flexShrink: 0,
-                  marginTop: '0.25rem',
-                }}>
-                  <CheckIcon size={24} />
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--spacing-xs)' }}>
-                    {feature.title}
-                  </h3>
-                  <p style={{ fontSize: '0.95rem', margin: 0 }}>
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Jak to probíhá */}
-      <section className="section section-alt">
-        <div className="container">
-          <h2>Jak probíhá test</h2>
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--spacing-lg)',
-          }}>
-            {processSteps.map((step, index) => (
-              <div key={index} className="card" style={{
-                display: 'flex',
-                gap: 'var(--spacing-lg)',
-                alignItems: 'flex-start',
-              }}>
-                <div style={{
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--color-primary)',
-                  color: 'white',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '1.5rem',
-                  fontWeight: 700,
-                  flexShrink: 0,
-                }}>
-                  {step.step}
-                </div>
-                <div>
-                  <h3 style={{ marginBottom: 'var(--spacing-xs)' }}>{step.title}</h3>
-                  <p style={{ margin: 0 }}>{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Balíčky */}
-      <section className="section">
-        <div className="container">
-          <h2 className="text-center">Vyberte si balíček</h2>
-          <p style={{
-            textAlign: 'center',
-            marginBottom: 'var(--spacing-xl)',
-            color: 'var(--color-text-gray)',
-          }}>
-            Čím více testů, tím větší příprava a jistota. Doporučujeme absolvovat alespoň 3 testy pro komplexní přípravu.
-          </p>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: 'var(--spacing-xl)',
-          }}>
-            {packages.map((pkg, index) => (
-              <div
-                key={index}
-                className="card"
-                style={{
-                  position: 'relative',
-                  border: pkg.popular ? '2px solid var(--color-primary)' : '1px solid var(--color-border)',
-                }}
-              >
-                {pkg.popular && (
-                  <div style={{
-                    position: 'absolute',
-                    top: '-12px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    backgroundColor: 'var(--color-primary)',
-                    color: 'white',
-                    padding: '0.25rem 1rem',
-                    borderRadius: '20px',
-                    fontSize: '0.875rem',
-                    fontWeight: 600,
-                  }}>
-                    Nejpopulárnější
-                  </div>
-                )}
-                <h3 style={{ textAlign: 'center', marginBottom: 'var(--spacing-md)' }}>
-                  {pkg.name}
-                </h3>
-                <div style={{
-                  textAlign: 'center',
-                  marginBottom: 'var(--spacing-md)',
-                }}>
-                  {pkg.originalPrice && (
-                    <div style={{
-                      fontSize: '1rem',
-                      color: 'var(--color-text-gray)',
-                      textDecoration: 'line-through',
-                      marginBottom: '0.25rem',
-                    }}>
-                      {pkg.originalPrice.toLocaleString('cs-CZ')} Kč
-                    </div>
-                  )}
-                  <div style={{
-                    fontSize: '2rem',
-                    fontWeight: 700,
-                    color: 'var(--color-primary)',
-                  }}>
-                    {pkg.price.toLocaleString('cs-CZ')} Kč
-                  </div>
-                  {pkg.originalPrice && (
-                    <div style={{
-                      fontSize: '0.875rem',
-                      color: 'var(--color-secondary)',
-                      marginTop: '0.25rem',
-                    }}>
-                      Ušetříte {(pkg.originalPrice - pkg.price).toLocaleString('cs-CZ')} Kč
-                    </div>
-                  )}
-                </div>
-                <ul style={{
-                  listStyle: 'none',
-                  padding: 0,
-                  marginBottom: 'var(--spacing-lg)',
-                }}>
-                  {pkg.features.map((feature, i) => (
-                    <li key={i} style={{
-                      marginBottom: 'var(--spacing-xs)',
-                      paddingLeft: '1.75rem',
-                      position: 'relative',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}>
-                      <span style={{
-                        position: 'absolute',
-                        left: 0,
-                        color: 'var(--color-secondary)',
-                        display: 'flex',
-                        alignItems: 'center',
-                      }}>
-                        <CheckIcon size={18} />
-                      </span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <button className="btn btn-primary" style={{ width: '100%' }}>
-                  Koupit
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="section section-alt">
-        <FAQ items={faqItems} />
-      </section>
-
-      {/* CTA */}
-      <section className="section">
-        <div className="container">
-          <div className="card" style={{
-            textAlign: 'center',
-            background: 'linear-gradient(135deg, #4A90E2 0%, #52C9A2 100%)',
-            color: 'white',
-          }}>
-            <h2 style={{ color: 'white', marginBottom: 'var(--spacing-md)' }}>
-              Začněte přípravu ještě dnes
-            </h2>
+        {/* Hero Section */}
+        <section style={{
+          background: 'linear-gradient(135deg, #4A90E2 0%, #52C9A2 100%)',
+          color: 'white',
+          padding: 'var(--spacing-2xl) 0',
+        }}>
+          <div className="container">
+            <h1 style={{ color: 'white', marginBottom: 'var(--spacing-md)' }}>
+              Online testy - Připravte se odkudkoliv a kdykoliv
+            </h1>
             <p style={{
-              color: 'rgba(255, 255, 255, 0.95)',
+              fontSize: '1.25rem',
               marginBottom: 'var(--spacing-lg)',
+              color: 'rgba(255, 255, 255, 0.95)',
             }}>
-              Neztrácejte čas a začněte připravovat vaše dítě na přijímačky už teď. Každý den se počítá.
+              Realistické testy nanečisto s okamžitým vyhodnocením. Každý test obsahuje video s vysvětlením každé úlohy a porovnání s ostatními studenty. Ideální pro systematickou přípravu v pohodlí domova.
             </p>
             <div style={{
-              display: 'flex',
-              gap: 'var(--spacing-md)',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
+              fontSize: '2.5rem',
+              fontWeight: 700,
+              marginBottom: 'var(--spacing-lg)',
             }}>
-              <button className="btn btn-large" style={{
-                backgroundColor: 'white',
-                color: 'var(--color-primary)',
-              }}>
-                Koupit Online testy
-              </button>
-              <Link href="/ukazkovy-test" className="btn btn-large" style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                border: '2px solid white',
-                color: 'white',
-              }}>
-                Nebo vyzkoušejte zdarma
-              </Link>
+              od 490 Kč
             </div>
+            <Link href="/objednavka" className="btn btn-primary btn-large" style={{
+              backgroundColor: 'white',
+              color: 'var(--color-primary)',
+            }}>
+              Koupit nyní
+            </Link>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Co je zahrnuto */}
+        <section className="section">
+          <div className="container">
+            <h2>Co je součástí testu</h2>
+            <TestFeatures features={testFeatures} />
+          </div>
+        </section>
+
+        {/* Jak to probíhá */}
+        <section className="section section-alt">
+          <div className="container">
+            <h2>Jak probíhá test</h2>
+            <ProcessSteps steps={processData} />
+          </div>
+        </section>
+
+        {/* Balíčky */}
+        <section className="section">
+          <div className="container">
+            <h2 className="text-center">Vyberte si balíček</h2>
+            <p style={{
+              textAlign: 'center',
+              marginBottom: 'var(--spacing-xl)',
+              color: 'var(--color-text-gray)',
+            }}>
+              Čím více testů, tím větší příprava a jistota. Doporučujeme absolvovat alespoň 3 testy pro komplexní přípravu.
+            </p>
+            <TestPackages packages={testPackages} />
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="section section-alt">
+          <FAQ items={faqData} />
+        </section>
+
+        {/* CTA */}
+        <section className="section">
+          <div className="container">
+            <CallToAction />
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </>
   )
 }
-
