@@ -15,6 +15,7 @@ export default function LoginPage() {
     setError('')
 
     try {
+      console.log('Attempting login with password:', password)
       const response = await fetch('/api/login', {
         method: 'POST',
         headers: {
@@ -24,20 +25,24 @@ export default function LoginPage() {
       })
 
       const result = await response.json()
+      console.log('Login response:', result)
 
       if (response.ok && result.success) {
+        console.log('Login successful, redirecting to /admin')
         router.push('/admin')
       } else {
+        console.log('Login failed:', result.error)
         setError(result.error || 'Chyba přihlášení')
       }
     } catch (error) {
+      console.log('Login error:', error)
       setError('Chyba komunikace se serverem')
     } finally {
       setLoading(false)
     }
   }
 
-  return (
+return (
     <div style={{
       minHeight: '100vh',
       display: 'flex',
@@ -54,12 +59,12 @@ export default function LoginPage() {
         maxWidth: '400px'
       }}>
         <h1 style={{ textAlign: 'center', marginBottom: '2rem', color: '#333' }}>
-          Přihlášení do administrace
+          Přihlášení
         </h1>
         
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: '1rem' }}>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
+            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#333' }}>
               Heslo
             </label>
             <input
@@ -69,9 +74,11 @@ export default function LoginPage() {
               style={{
                 width: '100%',
                 padding: '0.5rem',
-                border: '1px solid #ddd',
+                border: '1px solid #ccc',
                 borderRadius: '4px',
-                fontSize: '16px'
+                fontSize: '16px',
+                backgroundColor: '#fff',
+                color: '#333'
               }}
               required
             />
@@ -109,16 +116,6 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <div style={{
-          marginTop: '2rem',
-          padding: '1rem',
-          backgroundColor: '#f8f9fa',
-          borderRadius: '4px',
-          fontSize: '14px',
-          color: '#666'
-        }}>
-          <strong>Testovací heslo:</strong> admin123
-        </div>
       </div>
     </div>
   )

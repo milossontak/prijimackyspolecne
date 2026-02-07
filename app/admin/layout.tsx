@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function AdminLayout({
@@ -9,36 +8,6 @@ export default function AdminLayout({
   children: React.ReactNode
 }) {
   const router = useRouter()
-
-  useEffect(() => {
-    // Automatické odhlášení po 24 hodinách a kontrola session
-    const checkAuth = () => {
-      const checkServerAuth = async () => {
-        try {
-          const response = await fetch('/api/auth/check')
-          if (response.status === 401) {
-            router.push('/admin/login')
-            return
-          }
-          
-          const result = await response.json()
-          if (!result.authenticated) {
-            router.push('/admin/login')
-          }
-        } catch (error) {
-          console.error('Auth check error:', error)
-          router.push('/admin/login')
-        }
-      }
-
-      checkServerAuth()
-    }
-
-    checkAuth()
-    const interval = setInterval(checkAuth, 60000) // Kontrola každých minutu
-    
-    return () => clearInterval(interval)
-  }, [router])
 
   const handleLogout = async () => {
     try {

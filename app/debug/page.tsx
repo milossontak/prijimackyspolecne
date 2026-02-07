@@ -32,7 +32,7 @@ export default function DebugPage() {
       const response = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: 'admin123' }),
+        body: JSON.stringify({ password: process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'test-password' }),
       })
       const result = await response.json()
       alert(`Login result: ${JSON.stringify(result)}`)

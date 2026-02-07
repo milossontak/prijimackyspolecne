@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { password } = body
     
-    const ADMIN_PASSWORD = 'admin123' // V produkci by mělo být v env
+    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'fallback-password'
     
     if (password === ADMIN_PASSWORD) {
       const response = NextResponse.json({ success: true })
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
       response.cookies.set('admin_auth', 'true', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite: 'lax',
         maxAge: 24 * 60 * 60, // 24 hodin
         path: '/'
       })
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
       response.cookies.set('admin_timestamp', Date.now().toString(), {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite: 'lax',
         maxAge: 24 * 60 * 60,
         path: '/'
       })
