@@ -27,9 +27,6 @@ export function useContent() {
     }
 
     loadContent()
-    // Refresh každých 30 sekund
-    const interval = setInterval(loadContent, 30000)
-    return () => clearInterval(interval)
   }, [])
 
   return { content, loading, error }

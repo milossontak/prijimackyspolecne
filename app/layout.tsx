@@ -64,7 +64,7 @@ export default function RootLayout({
     "@type": "EducationalOrganization",
     "name": "Přijímačky Společně",
     "url": "https://prijimacky-spolecne.cz",
-    "logo": "https://prijimacky-spolecne.cz/logo.png",
+    "logo": "https://prijimacky-spolecne.cz/logo.webp",
     "description": "Pomáháme dětem zvládnout přijímací zkoušky na střední školy i gymnázia s klidem.",
     "contactPoint": {
       "@type": "ContactPoint",

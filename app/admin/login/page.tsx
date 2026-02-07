@@ -15,8 +15,7 @@ export default function LoginPage() {
     setError('')
 
     try {
-      console.log('Attempting login with password:', password)
-      const response = await fetch('/api/login', {
+      const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,17 +24,12 @@ export default function LoginPage() {
       })
 
       const result = await response.json()
-      console.log('Login response:', result)
-
       if (response.ok && result.success) {
-        console.log('Login successful, redirecting to /admin')
         router.push('/admin')
       } else {
-        console.log('Login failed:', result.error)
         setError(result.error || 'Chyba přihlášení')
       }
     } catch (error) {
-      console.log('Login error:', error)
       setError('Chyba komunikace se serverem')
     } finally {
       setLoading(false)

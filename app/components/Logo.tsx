@@ -26,7 +26,7 @@ export default function Logo({ size = 40, asLink = true, className }: LogoProps)
       }}
     >
       <Image
-        src="/logo.png"
+        src="/logo.webp"
         alt="Přijímačky Společně"
         width={width}
         height={height}

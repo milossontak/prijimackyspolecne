@@ -17,8 +17,24 @@ const staticContent: any = {
   }
 }
 
+const contentCache: { data: any; expiresAt: number } = { data: null, expiresAt: 0 }
+const CACHE_TTL_MS = 10 * 1000
+
 export async function GET() {
   try {
+    const now = Date.now()
+    if (contentCache.data && contentCache.expiresAt > now) {
+      return new Response(JSON.stringify({
+        success: true,
+        data: contentCache.data
+      }), {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+    }
+
     // Zkusíme načíst z JSON souboru
     const fs = require('fs')
     const path = require('path')
@@ -27,6 +43,9 @@ export async function GET() {
     if (fs.existsSync(contentFile)) {
       const data = fs.readFileSync(contentFile, 'utf8')
       const jsonData = JSON.parse(data)
+
+      contentCache.data = jsonData
+      contentCache.expiresAt = Date.now() + CACHE_TTL_MS
       
       // Vracíme string, aby se vyhnulo problému s Next.js
       return new Response(JSON.stringify({ 
@@ -41,6 +60,8 @@ export async function GET() {
     }
     
     // Fallback na statická data
+    contentCache.data = staticContent
+    contentCache.expiresAt = Date.now() + CACHE_TTL_MS
     return new Response(JSON.stringify({ 
       success: true, 
       data: staticContent 
@@ -52,6 +73,8 @@ export async function GET() {
     })
   } catch (error) {
     console.error('Content API error:', error)
+    contentCache.data = staticContent
+    contentCache.expiresAt = Date.now() + CACHE_TTL_MS
     return new Response(JSON.stringify({ 
       success: false, 
       error: 'Failed to load content',
@@ -116,6 +139,9 @@ export async function PUT(request: NextRequest) {
     
     // Zápis do souboru
     fs.writeFileSync(contentFile, JSON.stringify(content, null, 2), 'utf8')
+
+    contentCache.data = content
+    contentCache.expiresAt = Date.now() + CACHE_TTL_MS
     
     return new Response(JSON.stringify({ 
       success: true, 

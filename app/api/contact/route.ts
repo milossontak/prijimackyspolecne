@@ -1,9 +1,49 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
+interface ContactPayload {
+  name?: string
+  email?: string
+  phone?: string
+  message?: string
+}
+
+const contactRateLimit = new Map<string, { count: number; resetAt: number }>()
+const CONTACT_WINDOW_MS = 10 * 60 * 1000
+const CONTACT_MAX_ATTEMPTS = 5
+
+function getClientIp(request: NextRequest) {
+  const forwardedFor = request.headers.get('x-forwarded-for')
+  if (forwardedFor) {
+    return forwardedFor.split(',')[0]?.trim() || 'unknown'
+  }
+  return request.headers.get('x-real-ip') || 'local'
+}
+
+function isRateLimited(ip: string) {
+  const now = Date.now()
+  const entry = contactRateLimit.get(ip)
+  if (!entry || now > entry.resetAt) {
+    contactRateLimit.set(ip, { count: 1, resetAt: now + CONTACT_WINDOW_MS })
+    return false
+  }
+  entry.count += 1
+  contactRateLimit.set(ip, entry)
+  return entry.count > CONTACT_MAX_ATTEMPTS
+}
+
 export async function POST(request: NextRequest) {
+  let body: ContactPayload | null = null
   try {
-    const body = await request.json()
+    const ip = getClientIp(request)
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { success: false, error: 'Příliš mnoho odeslání. Zkuste to později.' },
+        { status: 429 }
+      )
+    }
+
+    body = (await request.json()) as ContactPayload
     const { name, email, phone, message } = body
 
     // Validate required fields
@@ -71,7 +111,7 @@ export async function POST(request: NextRequest) {
       console.log('Email would be sent:', {
         to: process.env.CONTACT_EMAIL || 'info@prijimackyspolecne.cz',
         subject: `Nová zpráva z webu`,
-        data: await request.json()
+        data: body
       })
       
       return NextResponse.json({

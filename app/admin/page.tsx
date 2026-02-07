@@ -16,6 +16,10 @@ export default function ContentEditor() {
     loadContent()
   }, [])
 
+  useEffect(() => {
+    setExpandedItems((prev) => ({ ...prev, [activeSection]: true }))
+  }, [activeSection])
+
   const loadContent = async () => {
     try {
       const response = await fetch('/api/content')

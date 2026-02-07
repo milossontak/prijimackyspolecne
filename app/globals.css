@@ -6,8 +6,8 @@
 
 :root {
   /* Barvy podle designového návrhu */
-  --color-primary: #4A90E2;
-  --color-secondary: #52C9A2;
+  --color-primary: #0066CC;
+  --color-secondary: #00A652;
   --color-accent-light: #FFD89B;
   --color-accent-green: #A8E6CF;
   --color-text-dark: #2C3E50;
@@ -86,7 +86,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-secondary);
+  color: #0052A3;
 }
 
 .container {
@@ -262,25 +262,6 @@ select:focus-visible {
   border: 0;
 }
 
-/* Better color contrast */
-a {
-  color: #0066CC; /* Better contrast than original */
-}
-
-a:hover {
-  color: #0052A3;
-}
-
-.btn-primary {
-  background-color: #0066CC;
-  color: white;
-  box-shadow: var(--shadow-md);
-}
-
-.btn-primary:hover {
-  background-color: #0052A3;
-}
-
 /* Improved button focus states */
 .btn:focus-visible {
   outline: 3px solid var(--color-primary);
@@ -348,4 +329,3 @@ select:invalid {
     margin-bottom: var(--spacing-sm);
   }
 }
-
