@@ -59,7 +59,7 @@ export default function BackupManager() {
   }
 
   if (loading) {
-    return <div style={{ padding: '2rem' }}>Načítám zálohy...</div>
+    return <div style={{ padding: '2rem', color: '#333' }}>Načítám zálohy...</div>
   }
 
   return (
@@ -86,17 +86,17 @@ export default function BackupManager() {
       <main style={{ padding: '2rem' }}>
         {backups.length === 0 ? (
           <div>
-            <h2>Žádné zálohy</h2>
-            <p>Zatím nebyly vytvořeny žádné zálohy obsahu.</p>
+            <h2 style={{ color: '#333' }}>Žádné zálohy</h2>
+            <p style={{ color: '#333' }}>Zatím nebyly vytvořeny žádné zálohy obsahu.</p>
           </div>
         ) : (
           <div>
-            <h2>Dostupné zálohy</h2>
+            <h2 style={{ color: '#333', marginBottom: '1.5rem' }}>Dostupné zálohy</h2>
             <div style={{ display: 'grid', gap: '1rem' }}>
               {backups.map((backup) => (
                 <div key={backup.filename} style={{
                   backgroundColor: 'white',
-                  border: '1px solid #ddd',
+                  border: '1px solid #ccc',
                   borderRadius: '4px',
                   padding: '1rem',
                   display: 'flex',
@@ -104,7 +104,7 @@ export default function BackupManager() {
                   alignItems: 'center'
                 }}>
                   <div>
-                    <h4>{backup.filename}</h4>
+                    <h4 style={{ color: '#333', margin: '0 0 0.5rem 0' }}>{backup.filename}</h4>
                     <p style={{ margin: '0.25rem 0', color: '#666' }}>
                       Datum: {formatDate(backup.date)}
                     </p>

@@ -79,7 +79,7 @@ export default function ContentEditor() {
       if (value.length > 100) {
         return (
           <div key={path} style={{ marginBottom: '1rem' }}>
-            <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+            <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem', color: '#333' }}>
               {label}
             </label>
             <textarea
@@ -89,9 +89,11 @@ export default function ContentEditor() {
                 width: '100%',
                 minHeight: '100px',
                 padding: '0.5rem',
-                border: '1px solid #ddd',
+                border: '1px solid #ccc',
                 borderRadius: '4px',
-                fontSize: '14px'
+                fontSize: '14px',
+                backgroundColor: '#fff',
+                color: '#333'
               }}
             />
           </div>
@@ -100,21 +102,23 @@ export default function ContentEditor() {
       
       return (
         <div key={path} style={{ marginBottom: '1rem' }}>
-          <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem' }}>
-            {label}
-          </label>
-          <input
-            type="text"
-            value={value}
-            onChange={(e) => saveValue(path, e.target.value)}
-            style={{
-              width: '100%',
-              padding: '0.5rem',
-              border: '1px solid #ddd',
-              borderRadius: '4px',
-              fontSize: '14px'
-            }}
-          />
+<label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem', color: '#333' }}>
+              {label}
+            </label>
+            <input
+              type="text"
+              value={value}
+              onChange={(e) => saveValue(path, e.target.value)}
+              style={{
+                width: '100%',
+                padding: '0.5rem',
+                border: '1px solid #ccc',
+                borderRadius: '4px',
+                fontSize: '14px',
+                backgroundColor: '#fff',
+                color: '#333'
+              }}
+            />
         </div>
       )
     }
@@ -122,14 +126,14 @@ export default function ContentEditor() {
     if (Array.isArray(value)) {
       return (
         <div key={path} style={{ marginBottom: '1rem' }}>
-          <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+          <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '0.5rem', color: '#333' }}>
             {label}
           </label>
           <div style={{ marginLeft: '1rem' }}>
             {value.map((item, index) => {
               if (typeof item === 'object' && item !== null) {
                 return (
-                  <div key={index} style={{ border: '1px solid #eee', padding: '1rem', marginBottom: '0.5rem' }}>
+                  <div key={index} style={{ border: '1px solid #ccc', padding: '1rem', marginBottom: '0.5rem', backgroundColor: '#fff' }}>
                     {Object.entries(item).map(([key, val]) => 
                       renderField(val, `${path}[${index}].${key}`, key)
                     )}
@@ -149,13 +153,14 @@ export default function ContentEditor() {
           <button
             onClick={() => setExpandedItems(prev => ({ ...prev, [path]: !prev[path] }))}
             style={{
-              background: '#f5f5f5',
-              border: '1px solid #ddd',
+              background: '#fff',
+              border: '1px solid #ccc',
               padding: '0.5rem',
               cursor: 'pointer',
               width: '100%',
               textAlign: 'left',
-              fontWeight: 'bold'
+              fontWeight: 'bold',
+              color: '#333'
             }}
           >
             {expandedItems[path] ? '▼' : '▶'} {label}
@@ -175,17 +180,17 @@ export default function ContentEditor() {
   }
 
   if (loading) {
-    return <div style={{ padding: '2rem' }}>Načítám obsah...</div>
+    return <div style={{ padding: '2rem', color: '#333' }}>Načítám obsah...</div>
   }
 
   if (!content) {
-    return <div style={{ padding: '2rem' }}>Chyba při načítání obsahu</div>
+    return <div style={{ padding: '2rem', color: '#333' }}>Chyba při načítání obsahu</div>
   }
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
       <header style={{ 
-        backgroundColor: '#333', 
+        backgroundColor: '#918e8e', 
         color: 'white', 
         padding: '1rem 2rem',
         display: 'flex',
@@ -216,12 +221,12 @@ export default function ContentEditor() {
         <aside style={{ 
           width: '250px', 
           backgroundColor: '#fff',
-          borderRight: '1px solid #ddd',
+          borderRight: '1px solid #ccc',
           padding: '1rem',
           height: 'calc(100vh - 60px)',
           overflowY: 'auto'
         }}>
-          <h3>Sekce:</h3>
+          <h3 style={{ color: '#333', marginBottom: '1rem' }}>Sekce:</h3>
           {Object.keys(content).map(key => (
             <button
               key={key}
@@ -233,7 +238,7 @@ export default function ContentEditor() {
                 marginBottom: '0.5rem',
                 backgroundColor: activeSection === key ? '#007ACC' : '#fff',
                 color: activeSection === key ? 'white' : '#333',
-                border: '1px solid #ddd',
+                border: '1px solid #ccc',
                 textAlign: 'left'
               }}
             >
@@ -243,7 +248,7 @@ export default function ContentEditor() {
         </aside>
 
         <main style={{ flex: 1, padding: '2rem' }}>
-          <h2>{activeSection}</h2>
+          <h2 style={{ color: '#333', marginBottom: '1.5rem' }}>{activeSection}</h2>
           {renderField(content[activeSection as keyof SiteContent], activeSection, activeSection)}
         </main>
       </div>
