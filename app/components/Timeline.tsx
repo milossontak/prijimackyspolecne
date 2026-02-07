@@ -3,7 +3,7 @@ import { CalendarIcon } from './Icons'
 export default function Timeline() {
   const milestones = [
     {
-      date: 'Leden 2026',
+      date: 'Březen 2026',
       title: 'Registrace je možná',
       description: 'Od ledna můžete začít registrovat své dítě na přípravné testy. Zaregistrujte se včas a zajistěte místo pro vaše dítě.',
       icon: CalendarIcon,
@@ -50,11 +50,11 @@ export default function Timeline() {
             background: 'linear-gradient(to bottom, var(--color-secondary), var(--color-primary))',
             zIndex: 0,
           }} />
-          
+
           {milestones.map((milestone, index) => {
             const IconComponent = milestone.icon
             const isActive = milestone.status === 'active'
-            
+
             return (
               <div key={index} style={{
                 display: 'flex',
@@ -78,7 +78,7 @@ export default function Timeline() {
                 }}>
                   <IconComponent size={32} color="white" />
                 </div>
-                
+
                 {/* Obsah */}
                 <div style={{
                   flex: 1,

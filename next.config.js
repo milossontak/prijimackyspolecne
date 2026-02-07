@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
-// Výchozí basePath pro nasazení do /prijimacky-spolecne/. Pro root (prijimackyspolecne.cz) nastavte NEXT_PUBLIC_BASE_PATH=
+// Vývoj: basePath prázdný (localhost:3000). Produkce bez env: /prijimacky-spolecne. Pro root nastavte NEXT_PUBLIC_BASE_PATH=
 const basePath = (process.env.NEXT_PUBLIC_BASE_PATH !== undefined
   ? process.env.NEXT_PUBLIC_BASE_PATH
-  : '/prijimacky-spolecne'
+  : process.env.NODE_ENV === 'development'
+    ? ''
+    : '/prijimacky-spolecne'
 ).replace(/\/$/, '')
 
 const nextConfig = {
