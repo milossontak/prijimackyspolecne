@@ -1,11 +1,6 @@
 /** @type {import('next').NextConfig} */
-// Vývoj: basePath prázdný (localhost:3000). Produkce bez env: /prijimacky-spolecne. Pro root nastavte NEXT_PUBLIC_BASE_PATH=
-const basePath = (process.env.NEXT_PUBLIC_BASE_PATH !== undefined
-  ? process.env.NEXT_PUBLIC_BASE_PATH
-  : process.env.NODE_ENV === 'development'
-    ? ''
-    : '/prijimacky-spolecne'
-).replace(/\/$/, '')
+// Výchozí basePath je root. Pro subpath nastavte NEXT_PUBLIC_BASE_PATH.
+const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || '').replace(/\/$/, '')
 
 const isProduction = process.env.NODE_ENV === 'production'
 const enableExport = process.env.ENABLE_STATIC_EXPORT === 'true'
@@ -60,4 +55,3 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-
