@@ -27,6 +27,15 @@ export interface BlogPost extends BlogPostMeta {
 const BLOG_DIR = path.join(process.cwd(), 'data', 'blog')
 const FRONTMATTER_REGEX = /^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/
 const SLUG_SAFE = /^[a-z0-9-]+$/
+const CACHE_TTL_MS = 5 * 1000
+
+const postCache = new Map<string, { post: BlogPost; expiresAt: number }>()
+const listCache = new Map<string, { data: BlogPostMeta[]; expiresAt: number }>()
+
+function invalidateCache() {
+  postCache.clear()
+  listCache.clear()
+}
 
 export function ensureBlogDir() {
   if (!fs.existsSync(BLOG_DIR)) {
@@ -143,6 +152,11 @@ export function readPost(slug: string): BlogPost | null {
   const normalized = normalizeSlug(slug)
   if (!isValidSlug(normalized)) return null
 
+  const cached = postCache.get(normalized)
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.post
+  }
+
   const postPath = getPostPath(normalized)
   if (!fs.existsSync(postPath)) return null
 
@@ -150,7 +164,7 @@ export function readPost(slug: string): BlogPost | null {
   const { meta, body } = parseFrontmatter(raw)
   const stats = fs.statSync(postPath)
 
-  return {
+  const post: BlogPost = {
     title: meta.title || normalized,
     slug: meta.slug || normalized,
     perex: meta.perex || '',
@@ -167,10 +181,19 @@ export function readPost(slug: string): BlogPost | null {
     updatedAt: stats.mtime.toISOString(),
     content: body.trim(),
   }
+
+  postCache.set(normalized, { post, expiresAt: Date.now() + CACHE_TTL_MS })
+  return post
 }
 
 export function listPosts(includeDrafts = false): BlogPostMeta[] {
   ensureBlogDir()
+  const cacheKey = includeDrafts ? 'all' : 'published'
+  const cached = listCache.get(cacheKey)
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached.data
+  }
+
   const files = fs.readdirSync(BLOG_DIR).filter((file) => file.endsWith('.md'))
 
   const posts = files
@@ -182,11 +205,14 @@ export function listPosts(includeDrafts = false): BlogPostMeta[] {
     .filter((post) => includeDrafts || post.status === 'published')
     .map(({ content, ...meta }) => meta)
 
-  return posts.sort((a, b) => {
+  const sorted = posts.sort((a, b) => {
     const aDate = a.publishedAt ? Date.parse(a.publishedAt) : 0
     const bDate = b.publishedAt ? Date.parse(b.publishedAt) : 0
     return bDate - aDate
   })
+
+  listCache.set(cacheKey, { data: sorted, expiresAt: Date.now() + CACHE_TTL_MS })
+  return sorted
 }
 
 export function savePost(post: BlogPost, originalSlug?: string) {
@@ -222,6 +248,7 @@ export function savePost(post: BlogPost, originalSlug?: string) {
 
   const content = `${serializeFrontmatter(meta)}${post.content || ''}\n`
   fs.writeFileSync(targetPath, content, 'utf8')
+  invalidateCache()
 }
 
 export function deletePost(slug: string) {
@@ -235,4 +262,5 @@ export function deletePost(slug: string) {
   if (fs.existsSync(postPath)) {
     fs.unlinkSync(postPath)
   }
+  invalidateCache()
 }

@@ -9,7 +9,7 @@
     "export": "next build",
     "start": "next start",
     "serve": "npx serve out",
-    "lint": "next lint"
+    "lint": "next lint ."
   },
   "dependencies": {
     "@types/nodemailer": "^7.0.9",
