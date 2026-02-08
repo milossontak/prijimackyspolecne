@@ -144,7 +144,7 @@ export const siteContent = {
 
   footer: {
     tagline: 'Přijímačky Společně - Vaše cesta k úspěchu',
-    email: 'info@prijimacky-spolecne.cz',
+    email: 'info@prijimackyspolecne.cz',
     phone: '+420 608 778 823',
     copyright: '© 2024 Přijímačky Společně. Všechna práva vyhrazena.',
   },

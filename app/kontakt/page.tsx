@@ -72,7 +72,7 @@ export default function KontaktPage() {
               <h2>Kontaktní informace</h2>
               <p style={{ fontSize: '1.125rem', marginBottom: 'var(--spacing-md)' }}>
                 <strong>Email:</strong><br />
-                <a href="mailto:info@prijimacky-spolecne.cz">info@prijimacky-spolecne.cz</a>
+                <a href="mailto:info@prijimackyspolecne.cz">info@prijimackyspolecne.cz</a>
               </p>
               <p style={{ fontSize: '1.125rem', marginBottom: 'var(--spacing-md)' }}>
                 <strong>Telefon:</strong><br />
