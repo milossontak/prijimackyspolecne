@@ -33,6 +33,9 @@ export default function AdminLayout({
           <a href="/admin" style={{ color: 'white', textDecoration: 'none' }}>
             Editace obsahu
           </a>
+          <a href="/admin/blog" style={{ color: 'white', textDecoration: 'none' }}>
+            Blog
+          </a>
           <a href="/admin/backup" style={{ color: 'white', textDecoration: 'none' }}>
             Zálohy
           </a>

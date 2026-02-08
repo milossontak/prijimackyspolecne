@@ -207,3 +207,26 @@ export interface FormState<T> {
   isSubmitting: boolean
   isDirty: boolean
 }
+
+export type BlogStatus = 'draft' | 'published'
+
+export interface BlogPostMeta {
+  title: string
+  slug: string
+  perex?: string
+  coverImage?: string
+  author?: string
+  category?: string
+  tags?: string[]
+  publishedAt?: string
+  status?: BlogStatus
+  seoTitle?: string
+  seoDescription?: string
+  seoKeywords?: string[]
+  seoImage?: string
+  updatedAt?: string
+}
+
+export interface BlogPost extends BlogPostMeta {
+  content: string
+}

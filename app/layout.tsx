@@ -81,7 +81,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="cs">
+    <html lang="cs" data-scroll-behavior="smooth">
       <head>
         <script
           type="application/ld+json"
@@ -99,4 +99,3 @@ export default function RootLayout({
     </html>
   )
 }
-
