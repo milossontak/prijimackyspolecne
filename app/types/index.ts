@@ -100,6 +100,27 @@ export interface SiteContent {
       error: string
     }
   }
+  cta?: {
+    title?: string
+    description?: string
+    primaryText?: string
+    primaryLink?: string
+    secondaryText?: string
+    secondaryLink?: string
+  }
+  seo?: {
+    pages?: {
+      home?: SEOData
+      services?: SEOData
+      onlineTests?: SEOData
+      inPersonTests?: SEOData
+      package5?: SEOData
+      package25?: SEOData
+      contact?: SEOData
+      sampleTest?: SEOData
+      blog?: SEOData
+    }
+  }
 }
 
 export interface FAQItem {

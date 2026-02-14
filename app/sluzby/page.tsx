@@ -1,6 +1,21 @@
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
 import ServiceTypes from '@/app/components/ServiceTypes'
+import type { Metadata } from 'next'
+import { loadSiteContent } from '@/app/lib/content'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = loadSiteContent().seo?.pages?.services
+  return {
+    title: seo?.title || 'Služby | Příprava na přijímačky',
+    description:
+      seo?.description ||
+      'Vyberte si balíček přípravy na přijímací zkoušky: online testy nanečisto, osobní testy i komplexní příprava s videem a zpětnou vazbou.',
+    alternates: {
+      canonical: seo?.canonical || '/sluzby',
+    },
+  }
+}
 
 export default function SluzbyPage() {
   return (
@@ -15,7 +30,7 @@ export default function SluzbyPage() {
             margin: '0 auto var(--spacing-xl)',
             fontSize: '1.125rem',
           }}>
-            Nabízíme dva balíčky přípravy na přijímací zkoušky na střední školy i gymnázia z 5. třídy. Vyberte si tu, která nejlépe vyhovuje vašim potřebám.
+            Vyberte si balíček, který nejlépe odpovídá potřebám vašeho dítěte. Každá služba obsahuje testy nanečisto, jasnou zpětnou vazbu a doporučení pro další přípravu.
           </p>
         </div>
       </section>
@@ -24,4 +39,3 @@ export default function SluzbyPage() {
     </>
   )
 }
-

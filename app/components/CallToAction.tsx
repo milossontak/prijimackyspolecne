@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { useContent } from '../hooks/useContent'
 
 interface CallToActionProps {
   title?: string
@@ -12,11 +15,20 @@ interface CallToActionProps {
 export default function CallToAction({
   title = 'Začněte přípravu ještě dnes',
   description = 'Neztrácejte čas a začněte připravovat vaše dítě na přijímačky už teď. Každý den se počítá.',
-  primaryText = 'Koupit Online testy',
-  primaryLink = '/objednavka',
+  primaryText = 'Vybrat balíček a začít přípravu',
+  primaryLink = '/kontakt',
   secondaryText = 'Nebo vyzkoušejte zdarma',
   secondaryLink = '/ukazkovy-test'
 }: CallToActionProps) {
+  const { content } = useContent()
+
+  const resolvedTitle = content?.cta?.title || title
+  const resolvedDescription = content?.cta?.description || description
+  const resolvedPrimaryText = content?.cta?.primaryText || primaryText
+  const resolvedPrimaryLink = content?.cta?.primaryLink || primaryLink
+  const resolvedSecondaryText = content?.cta?.secondaryText || secondaryText
+  const resolvedSecondaryLink = content?.cta?.secondaryLink || secondaryLink
+
   return (
     <div className="card" style={{
       textAlign: 'center',
@@ -24,13 +36,13 @@ export default function CallToAction({
       color: 'white',
     }}>
       <h2 style={{ color: 'white', marginBottom: 'var(--spacing-md)' }}>
-        {title}
+        {resolvedTitle}
       </h2>
       <p style={{
         color: 'rgba(255, 255, 255, 0.95)',
         marginBottom: 'var(--spacing-lg)',
       }}>
-        {description}
+        {resolvedDescription}
       </p>
       <div style={{
         display: 'flex',
@@ -38,18 +50,18 @@ export default function CallToAction({
         justifyContent: 'center',
         flexWrap: 'wrap',
       }}>
-        <Link href={primaryLink} className="btn btn-large" style={{
+        <Link href={resolvedPrimaryLink} className="btn btn-large" style={{
           backgroundColor: 'white',
           color: 'var(--color-primary)',
         }}>
-          {primaryText}
+          {resolvedPrimaryText}
         </Link>
-        <Link href={secondaryLink} className="btn btn-large" style={{
+        <Link href={resolvedSecondaryLink} className="btn btn-large" style={{
           backgroundColor: 'rgba(255, 255, 255, 0.2)',
           border: '2px solid white',
           color: 'white',
         }}>
-          {secondaryText}
+          {resolvedSecondaryText}
         </Link>
       </div>
     </div>

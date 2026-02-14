@@ -7,6 +7,9 @@ const enableExport = process.env.ENABLE_STATIC_EXPORT === 'true'
 
 const nextConfig = {
   reactStrictMode: true,
+  turbopack: {
+    root: __dirname,
+  },
   // Only use export mode when explicitly enabled
   ...(enableExport && { output: 'export' }),
   ...(basePath && { basePath, assetPrefix: basePath }),

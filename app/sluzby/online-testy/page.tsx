@@ -7,6 +7,21 @@ import ProcessSteps from '@/app/components/ProcessSteps'
 import TestPackages from '@/app/components/TestPackages'
 import CallToAction from '@/app/components/CallToAction'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+import { loadSiteContent } from '@/app/lib/content'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = loadSiteContent().seo?.pages?.onlineTests
+  return {
+    title: seo?.title || 'Online testy nanečisto',
+    description:
+      seo?.description ||
+      'Online testy nanečisto k přijímacím zkouškám. Okamžité vyhodnocení, video vysvětlení úloh a doporučení pro další přípravu.',
+    alternates: {
+      canonical: seo?.canonical || '/sluzby/online-testy',
+    },
+  }
+}
 
 // Data extracted to separate constants for better maintainability
 const testFeatures = [
@@ -145,7 +160,7 @@ export default function OnlineTestyPage() {
         }}>
           <div className="container">
             <h1 style={{ color: 'white', marginBottom: 'var(--spacing-md)' }}>
-              Online testy - Připravte se odkudkoliv a kdykoliv
+              Online testy nanečisto: připravujte se kdykoliv a odkudkoliv
             </h1>
             <p style={{
               fontSize: '1.25rem',
@@ -161,11 +176,11 @@ export default function OnlineTestyPage() {
             }}>
               od 490 Kč
             </div>
-            <Link href="/objednavka" className="btn btn-primary btn-large" style={{
+            <Link href="/kontakt" className="btn btn-primary btn-large" style={{
               backgroundColor: 'white',
               color: 'var(--color-primary)',
             }}>
-              Koupit nyní
+              Vybrat balíček a začít
             </Link>
           </div>
         </section>
@@ -195,7 +210,7 @@ export default function OnlineTestyPage() {
               marginBottom: 'var(--spacing-xl)',
               color: 'var(--color-text-gray)',
             }}>
-              Čím více testů, tím větší příprava a jistota. Doporučujeme absolvovat alespoň 3 testy pro komplexní přípravu.
+              Více testů pomůže dříve odhalit slabá místa a zvýšit jistotu u přijímaček. Pro systematickou přípravu doporučujeme alespoň 3 testy.
             </p>
             <TestPackages packages={testPackages} />
           </div>

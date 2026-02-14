@@ -3,6 +3,21 @@ import Footer from '@/app/components/Footer'
 import FAQ from '@/app/components/FAQ'
 import { CheckIcon } from '@/app/components/Icons'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+import { loadSiteContent } from '@/app/lib/content'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = loadSiteContent().seo?.pages?.package25
+  return {
+    title: seo?.title || 'Komplexní balíček 25 testů',
+    description:
+      seo?.description ||
+      'Komplexní příprava na přijímačky: 25 testů nanečisto, volba online nebo osobně, video vysvětlení a sledování pokroku v čase.',
+    alternates: {
+      canonical: seo?.canonical || '/sluzby/komplexni-balicek',
+    },
+  }
+}
 
 const includedFeatures = [
   {
@@ -72,7 +87,7 @@ export default function KomplexniBalicekPage() {
       }}>
         <div className="container">
           <h1 style={{ color: 'white', marginBottom: 'var(--spacing-md)' }}>
-            Komplexní balíček - 25 testů
+            Komplexní balíček: 25 testů nanečisto
           </h1>
           <p style={{
             fontSize: '1.25rem',
@@ -88,12 +103,12 @@ export default function KomplexniBalicekPage() {
           }}>
             15 000 Kč
           </div>
-          <button className="btn btn-primary btn-large" style={{
+          <Link href="/kontakt" className="btn btn-primary btn-large" style={{
             backgroundColor: 'white',
             color: 'var(--color-primary)',
           }}>
-            Koupit nyní
-          </button>
+            Domluvit komplexní přípravu
+          </Link>
         </div>
       </section>
 
@@ -198,12 +213,12 @@ export default function KomplexniBalicekPage() {
               justifyContent: 'center',
               flexWrap: 'wrap',
             }}>
-              <button className="btn btn-large" style={{
+              <Link href="/kontakt" className="btn btn-large" style={{
                 backgroundColor: 'white',
                 color: 'var(--color-primary)',
               }}>
-                Koupit komplexní balíček
-              </button>
+                Domluvit komplexní balíček
+              </Link>
               <Link href="/ukazkovy-test" className="btn btn-large" style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 border: '2px solid white',
@@ -220,4 +235,3 @@ export default function KomplexniBalicekPage() {
     </>
   )
 }
-

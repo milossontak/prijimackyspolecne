@@ -5,6 +5,9 @@ import { siteContent } from '../content/site'
 const { footer } = siteContent
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear()
+  const copyrightText = footer.copyright.replace(/\b\d{4}\b/g, String(currentYear))
+
   return (
     <footer style={{
       backgroundColor: 'var(--color-text-dark)',
@@ -20,7 +23,15 @@ export default function Footer() {
           marginBottom: 'var(--spacing-xl)',
         }}>
           <div>
-            <div style={{ marginBottom: 'var(--spacing-md)' }}>
+            <div style={{
+              marginBottom: 'var(--spacing-md)',
+              display: 'inline-flex',
+              padding: '0.5rem 0.75rem',
+              borderRadius: '12px',
+              backgroundColor: 'rgba(255, 255, 255, 0.96)',
+              border: '1px solid rgba(255, 255, 255, 0.45)',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.22)',
+            }}>
               <Logo size={44} />
             </div>
             <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.95rem' }}>
@@ -59,10 +70,9 @@ export default function Footer() {
           color: 'rgba(255, 255, 255, 0.6)',
           fontSize: '0.9rem',
         }}>
-          {footer.copyright}
+          {copyrightText}
         </div>
       </div>
     </footer>
   )
 }
-

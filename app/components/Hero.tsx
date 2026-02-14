@@ -11,6 +11,9 @@ export default function Hero() {
     ctaSecondary: 'Zobrazit služby'
   }
 
+  const [heroTitlePrimary, ...heroTitleRest] = heroContent.h1.split(':')
+  const heroTitleSecondary = heroTitleRest.join(':').trim()
+
   return (
     <section style={{
       padding: 'var(--spacing-2xl) 0',
@@ -24,10 +27,18 @@ export default function Hero() {
           textAlign: 'center',
         }}>
           <h1 style={{
-            marginBottom: 'var(--spacing-lg)',
+            margin: '0 auto var(--spacing-lg)',
             fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+            maxWidth: '18ch',
+            lineHeight: 1.15,
+            textWrap: 'balance',
           }}>
-            {heroContent.h1}
+            <span>{heroTitlePrimary.trim()}</span>
+            {heroTitleSecondary ? (
+              <span style={{ display: 'block', marginTop: '0.25em', fontSize: '0.72em' }}>
+                {heroTitleSecondary}
+              </span>
+            ) : null}
           </h1>
           <div style={{
             fontSize: '1.25rem',

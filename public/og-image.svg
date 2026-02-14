@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Prijimacky Spolecne</title>
+  <desc id="desc">Priprava na prijimaci zkousky naneisto.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2e6dd9"/>
+      <stop offset="100%" stop-color="#28b88a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g fill="#ffffff" font-family="Verdana, sans-serif">
+    <text x="90" y="250" font-size="64" font-weight="700">Prijimacky Spolecne</text>
+    <text x="90" y="320" font-size="34" opacity="0.95">Priprava na prijimaci zkousky bez stresu</text>
+    <text x="90" y="380" font-size="30" opacity="0.9">Online testy naneisto, videoreseni a zpetna vazba</text>
+  </g>
+</svg>

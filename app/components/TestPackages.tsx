@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 interface TestPackage {
   name: string
   tests: number
@@ -103,9 +105,9 @@ export default function TestPackages({ packages }: TestPackagesProps) {
               </li>
             ))}
           </ul>
-          <button className="btn btn-primary" style={{ width: '100%' }}>
-            Koupit
-          </button>
+          <Link href="/kontakt" className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }}>
+            Vybrat balíček
+          </Link>
         </div>
       ))}
     </div>

@@ -57,7 +57,7 @@ export default function KontaktPage() {
       <Header />
       <section className="section" style={{ paddingTop: 'var(--spacing-2xl)', minHeight: '60vh' }}>
         <div className="container">
-          <h1 className="text-center">Kontakt</h1>
+          <h1 className="text-center">Kontakt a objednání přípravy</h1>
           
           <div style={{
             display: 'grid',
@@ -219,4 +219,3 @@ export default function KontaktPage() {
     </>
   )
 }
-

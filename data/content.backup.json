@@ -1,15 +1,15 @@
 {
   "metadata": {
     "title": "Přijímačky Společně - Přijímačky bez stresu",
-    "description": "Pomáháme dětem zvládnout přijímací zkoušky na střední školy i gymnázia z 5. třídy s klidem. Realistické testy nanečisto s okamžitou zpětnou vazbou a videem."
+    "description": "Pomáháme dětem zvládnout přijímací zkoušky na střední školy i gymnázia z 9. třídy s klidem. Realistické testy nanečisto s okamžitou zpětnou vazbou a videem.9"
   },
   "hero": {
-    "h1": "Získejte náskok – zvládneme přijímačky spolu a bez stresu!",
+    "h1": "Příprava na přijímačky nanečisto: zvládneme to spolu a bez stresu",
     "paragraphs": [
-      "Chcete, aby Vaše dítě zvládlo přijímačky v klidu a pohodě? Pak jste tu správně!",
-      "Pomůžeme Vašemu dítěti úspěšně složit přijímací zkoušky na střední školy i 4letá gymnázia. Naše realistické testy nanečisto jsou vytvářeny na principu Cermat testů z minulých let a jsou doplněny videem s výsupdateky a vysvětlením jednotlivých úloh.",
-      "Zároveň přichází s rychlou zpětnou vazbou, na základě které je jasné a přehledné, co žák zvládá, a na co je naopak potřeba se zaměřit.",
-      "Vaše dítě bude vědět, co ho čeká, a Vy budete mít jistotu, že je řádně připravené."
+      "Chcete, aby vaše dítě zvládlo přijímací zkoušky s jistotou? Jste na správném místě.",
+      "Pomáháme s přípravou na střední školy i víceletá gymnázia. Naše testy nanečisto vycházejí z úloh CERMAT a obsahují video řešení i detailní vyhodnocení.",
+      "Díky rychlé zpětné vazbě hned uvidíte, co dítě zvládá a na co je potřeba se zaměřit.",
+      "Dítě ví, co ho u přijímaček čeká, a vy máte přehled o reálném pokroku."
     ],
     "ctaPrimary": "Vyzkoušejte zdarma",
     "ctaSecondary": "Zobrazit služby"
@@ -47,7 +47,7 @@
       },
       {
         "title": "Připravte se na přijímačky bez stresu",
-        "description": "Naše testy jsou vytvořeny přesně podle zadání Cermat a jsou doplněny videem s detailním vysvětlením jednotlivých úloh."
+        "description": "Naše testy jsou vytvořeny podle zadání CERMAT a jsou doplněny videem s detailním vysvětlením jednotlivých úloh."
       }
     ]
   },
@@ -56,7 +56,7 @@
     "items": [
       {
         "title": "Testy podle skutečných přijímaček",
-        "description": "Naše testy nanečisto jsou vytvářeny přesně podle Cermat zadání z minulých let."
+        "description": "Naše testy nanečisto jsou vytvářeny podle zadání CERMAT z minulých let."
       },
       {
         "title": "Video s detailním vysvětlením každé úlohy",
@@ -85,7 +85,7 @@
     "items": [
       {
         "name": "Jana Nováková",
-        "content": "Díky vašim testům moje dcera zvládla přijímačky na první pokus. Video vysvětlení úloh byly naprosto skvělé!",
+        "content": "Díky vašim testům dcera zvládla přijímačky na první pokus. Video vysvětlení úloh bylo naprosto skvělé!",
         "role": "Matka, Praha"
       },
       {
@@ -117,8 +117,8 @@
   "footer": {
     "tagline": "Přijímačky Společně - Vaše cesta k úspěchu",
     "email": "info@prijimackyspolecne.cz",
-    "phone": "+420 608 778 823",
-    "copyright": "© 2024 Přijímačky Společně. Všechna práva vyhrazena."
+    "phone": "+420 737 827 230",
+    "copyright": "© 2026 Přijímačky Společně. Všechna práva vyhrazena."
   },
   "faq": {
     "title": "Často kladené otázky",

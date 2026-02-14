@@ -3,6 +3,21 @@ import Footer from '@/app/components/Footer'
 import FAQ from '@/app/components/FAQ'
 import { CheckIcon } from '@/app/components/Icons'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+import { loadSiteContent } from '@/app/lib/content'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = loadSiteContent().seo?.pages?.package5
+  return {
+    title: seo?.title || 'Balíček 5 testů nanečisto',
+    description:
+      seo?.description ||
+      'Balíček 5 testů nanečisto pro systematickou přípravu na přijímací zkoušky. Okamžité vyhodnocení, video vysvětlení a benchmark.',
+    alternates: {
+      canonical: seo?.canonical || '/sluzby/balicek-5-testu',
+    },
+  }
+}
 
 const includedFeatures = [
   {
@@ -72,7 +87,7 @@ export default function Balicek5TestuPage() {
       }}>
         <div className="container">
           <h1 style={{ color: 'white', marginBottom: 'var(--spacing-md)' }}>
-            Balíček 5 testů
+            Balíček 5 testů nanečisto
           </h1>
           <p style={{
             fontSize: '1.25rem',
@@ -88,12 +103,12 @@ export default function Balicek5TestuPage() {
           }}>
             3 000 Kč
           </div>
-          <button className="btn btn-primary btn-large" style={{
+          <Link href="/kontakt" className="btn btn-primary btn-large" style={{
             backgroundColor: 'white',
             color: 'var(--color-secondary)',
           }}>
-            Koupit nyní
-          </button>
+            Vybrat balíček a začít
+          </Link>
         </div>
       </section>
 
@@ -274,12 +289,12 @@ export default function Balicek5TestuPage() {
               justifyContent: 'center',
               flexWrap: 'wrap',
             }}>
-              <button className="btn btn-large" style={{
+              <Link href="/kontakt" className="btn btn-large" style={{
                 backgroundColor: 'white',
                 color: 'var(--color-secondary)',
               }}>
-                Koupit balíček 5 testů
-              </button>
+                Vybrat balíček 5 testů
+              </Link>
               <Link href="/sluzby/komplexni-balicek" className="btn btn-large" style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 border: '2px solid white',
@@ -296,4 +311,3 @@ export default function Balicek5TestuPage() {
     </>
   )
 }
-

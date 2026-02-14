@@ -40,7 +40,7 @@ export default function ServiceTypes() {
   return (
     <section className="section section-alt">
       <div className="container">
-        <h2 className="text-center">Vyberte si typ přípravy</h2>
+        <h2 className="text-center">Vyberte si balíček přípravy na přijímačky</h2>
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
@@ -141,4 +141,3 @@ export default function ServiceTypes() {
     </section>
   )
 }
-

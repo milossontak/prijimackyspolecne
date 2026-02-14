@@ -1,7 +1,22 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import Header from '@/app/components/Header'
 import Footer from '@/app/components/Footer'
 import { listPosts } from '@/app/lib/blog'
+import { loadSiteContent } from '@/app/lib/content'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = loadSiteContent().seo?.pages?.blog
+  return {
+    title: seo?.title || 'Blog o přijímačkách',
+    description:
+      seo?.description ||
+      'Praktické návody k přijímacím zkouškám: strategie CERMAT, tipy k matematice a češtině i doporučení pro rodiče.',
+    alternates: {
+      canonical: seo?.canonical || '/blog',
+    },
+  }
+}
 
 export const dynamic = 'force-dynamic'
 export const dynamicParams = true
@@ -15,7 +30,7 @@ export default function BlogPage() {
       <Header />
       <section className="section" style={{ paddingTop: 'var(--spacing-2xl)', minHeight: '60vh' }}>
         <div className="container">
-          <h1 className="text-center">Blog</h1>
+          <h1 className="text-center">Blog o přijímačkách</h1>
           <p
             style={{
               textAlign: 'center',
@@ -24,7 +39,11 @@ export default function BlogPage() {
               fontSize: '1.125rem',
             }}
           >
-            Edukativní obsah, rady pro rodiče i studenty. Nové články přidáváme průběžně.
+            Praktické návody k přijímacím zkouškám: strategie CERMAT, tipy k matematice a češtině i doporučení pro rodiče.
+          </p>
+
+          <p style={{ textAlign: 'center', marginTop: 'var(--spacing-md)' }}>
+            Chcete začít hned? <Link href="/sluzby" style={{ fontWeight: 600 }}>Podívejte se na naše služby</Link>.
           </p>
 
           {posts.length === 0 ? (

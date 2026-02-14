@@ -5,16 +5,16 @@
 export const siteContent = {
   metadata: {
     title: 'Přijímačky Společně - Přijímačky bez stresu',
-    description: 'Pomáháme dětem zvládnout přijímací zkoušky na střední školy i gymnázia z 5. třídy s klidem. Realistické testy nanečisto s okamžitou zpětnou vazbou a videem.',
+    description: 'Pomáháme dětem zvládnout přijímací zkoušky na střední školy i gymnázia z 9. třídy s klidem. Realistické testy nanečisto s okamžitou zpětnou vazbou a videem.',
   },
 
   hero: {
-    h1: 'Získejte náskok – zvládneme přijímačky spolu a bez stresu!',
+    h1: 'Příprava na přijímačky nanečisto: Zvládneme to spolu a bez stresu',
     paragraphs: [
-      'Chcete, aby Vaše dítě zvládlo přijímačky v klidu a pohodě? Pak jste tu správně!',
-      'Pomůžeme Vašemu dítěti úspěšně složit přijímací zkoušky na střední školy i 4letá gymnázia. Naše realistické testy nanečisto jsou vytvářeny na principu Cermat testů z minulých let a jsou doplněny videem s výsupdateky a vysvětlením jednotlivých úloh.',
-      'Zároveň přichází s rychlou zpětnou vazbou, na základě které je jasné a přehledné, co žák zvládá, a na co je naopak potřeba se zaměřit.',
-      'Vaše dítě bude vědět, co ho čeká, a Vy budete mít jistotu, že je řádně připravené.',
+      'Chcete, aby vaše dítě zvládlo přijímací zkoušky s jistotou? Jste na správném místě.',
+      'Pomáháme s přípravou na střední školy i víceletá gymnázia. Naše testy nanečisto vycházejí z úloh CERMAT a obsahují video řešení i detailní vyhodnocení.',
+      'Díky rychlé zpětné vazbě hned uvidíte, co dítě zvládá a na co je potřeba se zaměřit.',
+      'Dítě ví, co ho u přijímaček čeká, a vy máte přehled o reálném pokroku.',
     ],
     ctaPrimary: 'Vyzkoušejte zdarma',
     ctaSecondary: 'Zobrazit služby',
@@ -46,7 +46,7 @@ export const siteContent = {
       },
       {
         title: 'Připravte se na přijímačky bez stresu',
-        description: 'Naše testy jsou vytvořeny přesně podle zadání Cermat a jsou doplněny videem s detailním vysvětlením jednotlivých úloh.',
+        description: 'Naše testy jsou vytvořeny podle zadání CERMAT a jsou doplněny videem s detailním vysvětlením jednotlivých úloh.',
       },
     ],
   },
@@ -56,7 +56,7 @@ export const siteContent = {
     items: [
       {
         title: 'Testy podle skutečných přijímaček',
-        description: 'Naše testy nanečisto jsou vytvářeny přesně podle Cermat zadání z minulých let.',
+        description: 'Naše testy nanečisto jsou vytvářeny podle zadání CERMAT z minulých let.',
       },
       {
         title: 'Video s detailním vysvětlením každé úlohy',
@@ -86,7 +86,7 @@ export const siteContent = {
     items: [
       {
         name: 'Jana Nováková',
-        content: 'Díky vašim testům moje dcera zvládla přijímačky na první pokus. Video vysvětlení úloh byly naprosto skvělé!',
+        content: 'Díky vašim testům dcera zvládla přijímačky na první pokus. Video vysvětlení úloh bylo naprosto skvělé!',
         role: 'Matka, Praha',
       },
       {
@@ -145,12 +145,80 @@ export const siteContent = {
   footer: {
     tagline: 'Přijímačky Společně - Vaše cesta k úspěchu',
     email: 'info@prijimackyspolecne.cz',
-    phone: '+420 608 778 823',
-    copyright: '© 2024 Přijímačky Společně. Všechna práva vyhrazena.',
+    phone: '+420 737 827 230',
+    copyright: '© 2026 Přijímačky Společně. Všechna práva vyhrazena.',
   },
 
   services: {
     mainTitle: 'Vyberte si službu na míru',
     mainDescription: 'Každé dítě je jiné. Proto nabízíme různé typy přípravy, aby si každý mohl vybrat tu nejlepší variantu pro své potřeby.',
+  },
+
+  cta: {
+    title: 'Začněte s přípravou na přijímačky ještě dnes',
+    description: 'Vyberte balíček přípravy podle potřeb vašeho dítěte, nebo si nejdříve vyzkoušejte ukázkový test zdarma.',
+    primaryText: 'Vybrat balíček a začít přípravu',
+    primaryLink: '/kontakt',
+    secondaryText: 'Nejdřív vyzkoušet test zdarma',
+    secondaryLink: '/ukazkovy-test',
+  },
+
+  seo: {
+    pages: {
+      home: {
+        title: 'Příprava na přijímací zkoušky nanečisto',
+        description:
+          'Připravte dítě na přijímací zkoušky na střední školy i gymnázia. Online i osobní testy nanečisto, video řešení a okamžitá zpětná vazba.',
+        canonical: '/',
+      },
+      services: {
+        title: 'Služby | Příprava na přijímačky',
+        description:
+          'Vyberte si balíček přípravy na přijímací zkoušky: online testy nanečisto, osobní testy i komplexní příprava s videem a zpětnou vazbou.',
+        canonical: '/sluzby',
+      },
+      onlineTests: {
+        title: 'Online testy nanečisto',
+        description:
+          'Online testy nanečisto k přijímacím zkouškám. Okamžité vyhodnocení, video vysvětlení úloh a doporučení pro další přípravu.',
+        canonical: '/sluzby/online-testy',
+      },
+      inPersonTests: {
+        title: 'Osobní testy nanečisto',
+        description:
+          'Osobní testy nanečisto v reálných podmínkách přijímaček. Získejte detailní vyhodnocení, video vysvětlení a doporučení pro další přípravu.',
+        canonical: '/sluzby/osobni-testy',
+      },
+      package5: {
+        title: 'Balíček 5 testů nanečisto',
+        description:
+          'Balíček 5 testů nanečisto pro systematickou přípravu na přijímací zkoušky. Okamžité vyhodnocení, video vysvětlení a benchmark.',
+        canonical: '/sluzby/balicek-5-testu',
+      },
+      package25: {
+        title: 'Komplexní balíček 25 testů',
+        description:
+          'Komplexní příprava na přijímačky: 25 testů nanečisto, volba online nebo osobně, video vysvětlení a sledování pokroku v čase.',
+        canonical: '/sluzby/komplexni-balicek',
+      },
+      contact: {
+        title: 'Kontakt',
+        description:
+          'Kontaktujte nás a vybereme nejlepší přípravu na přijímací zkoušky pro vaše dítě. Odpovídáme každý pracovní den.',
+        canonical: '/kontakt',
+      },
+      sampleTest: {
+        title: 'Ukázkový test zdarma',
+        description:
+          'Stáhněte si ukázkové testy z matematiky a češtiny zdarma. Získáte zadání i řešení pro rychlou orientaci v úrovni přípravy.',
+        canonical: '/ukazkovy-test',
+      },
+      blog: {
+        title: 'Blog o přijímačkách',
+        description:
+          'Praktické návody k přijímacím zkouškám: strategie CERMAT, tipy k matematice a češtině i doporučení pro rodiče.',
+        canonical: '/blog',
+      },
+    },
   },
 }

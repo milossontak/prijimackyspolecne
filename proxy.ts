@@ -1,10 +1,8 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
-  
-  
 
   // Only redirect /admin to /admin/login, allow other admin pages
   if (pathname === '/admin' || pathname === '/admin/') {
@@ -34,5 +32,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/admin']
+  matcher: ['/admin/:path*', '/admin'],
 }

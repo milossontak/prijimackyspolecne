@@ -8,9 +8,29 @@ export default function UkazkovyTestPage() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
+  const samplePacks = [
+    {
+      title: 'Matematika',
+      items: [
+        { label: 'Zadání 1 (PDF)', href: '#' },
+        { label: 'Řešení 1 (PDF)', href: '#' },
+        { label: 'Zadání 2 (PDF)', href: '#' },
+        { label: 'Řešení 2 (PDF)', href: '#' },
+      ],
+    },
+    {
+      title: 'Čeština',
+      items: [
+        { label: 'Zadání 1 (PDF)', href: '#' },
+        { label: 'Řešení 1 (PDF)', href: '#' },
+        { label: 'Zadání 2 (PDF)', href: '#' },
+        { label: 'Řešení 2 (PDF)', href: '#' },
+      ],
+    },
+  ]
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Zde by byla logika pro odeslání emailu a poskytnutí testu
     setSubmitted(true)
   }
 
@@ -74,11 +94,49 @@ export default function UkazkovyTestPage() {
                   Děkujeme!
                 </h2>
                 <p style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
-                  Na váš email <strong>{email}</strong> jsme vám poslali odkaz na ukázkový test. 
-                  Zkontrolujte prosím svou schránku (i spam složku).
+                  Děkujeme za vyplnění. Odesílání ukázkového testu emailem je aktuálně ve vývoji.
+                  Níže zatím najdete sekci s ukázkovými PDF (placeholdery).
                 </p>
               </div>
             )}
+
+            <div style={{ marginTop: 'var(--spacing-2xl)' }}>
+              <h2 style={{ marginBottom: 'var(--spacing-sm)' }}>Ukázkové testy ke stažení</h2>
+              <p style={{ marginBottom: 'var(--spacing-lg)', color: 'var(--color-text-light)' }}>
+                Zatím placeholder sekce. PDF soubory doplníme později.
+              </p>
+
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gap: 'var(--spacing-lg)',
+              }}>
+                {samplePacks.map((pack) => (
+                  <div key={pack.title} className="card">
+                    <h3 style={{ marginBottom: 'var(--spacing-md)' }}>{pack.title}</h3>
+                    <div style={{ display: 'grid', gap: 'var(--spacing-sm)' }}>
+                      {pack.items.map((item) => (
+                        <a
+                          key={item.label}
+                          href={item.href}
+                          className="btn"
+                          style={{
+                            display: 'block',
+                            textAlign: 'center',
+                            backgroundColor: '#eef3f8',
+                            color: 'var(--color-text-dark)',
+                            border: '1px dashed var(--color-border)',
+                          }}
+                          aria-disabled="true"
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -86,4 +144,3 @@ export default function UkazkovyTestPage() {
     </>
   )
 }
-

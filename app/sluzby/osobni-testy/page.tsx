@@ -3,6 +3,21 @@ import Footer from '@/app/components/Footer'
 import FAQ from '@/app/components/FAQ'
 import { CheckIcon } from '@/app/components/Icons'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+import { loadSiteContent } from '@/app/lib/content'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = loadSiteContent().seo?.pages?.inPersonTests
+  return {
+    title: seo?.title || 'Osobní testy nanečisto',
+    description:
+      seo?.description ||
+      'Osobní testy nanečisto v reálných podmínkách přijímaček. Získejte detailní vyhodnocení, video vysvětlení a doporučení pro další přípravu.',
+    alternates: {
+      canonical: seo?.canonical || '/sluzby/osobni-testy',
+    },
+  }
+}
 
 const includedFeatures = [
   {
@@ -141,7 +156,7 @@ export default function OsobniTestyPage() {
       }}>
         <div className="container">
           <h1 style={{ color: 'white', marginBottom: 'var(--spacing-md)' }}>
-            Osobní testy nanečisto - Reálná simulace přijímaček
+            Osobní testy nanečisto: reálná simulace přijímaček
           </h1>
           <p style={{
             fontSize: '1.25rem',
@@ -157,12 +172,12 @@ export default function OsobniTestyPage() {
           }}>
             od 890 Kč
           </div>
-          <button className="btn btn-primary btn-large" style={{
+          <Link href="/kontakt" className="btn btn-primary btn-large" style={{
             backgroundColor: 'white',
             color: 'var(--color-secondary)',
           }}>
-            Koupit nyní
-          </button>
+            Domluvit osobní test
+          </Link>
         </div>
       </section>
 
@@ -251,7 +266,7 @@ export default function OsobniTestyPage() {
             marginBottom: 'var(--spacing-xl)',
             color: 'var(--color-text-gray)',
           }}>
-            Čím více testů, tím větší příprava a jistota. Doporučujeme absolvovat alespoň 3 testy pro komplexní přípravu.
+            Více testů pomůže dříve odhalit slabá místa a zvýšit jistotu u přijímaček. Pro systematickou přípravu doporučujeme alespoň 3 testy.
           </p>
           <div style={{
             display: 'grid',
@@ -343,12 +358,13 @@ export default function OsobniTestyPage() {
                     </li>
                   ))}
                 </ul>
-                <button className="btn btn-primary" style={{
+                <Link href="/kontakt" className="btn btn-primary" style={{
                   width: '100%',
                   backgroundColor: 'var(--color-secondary)',
+                  textAlign: 'center',
                 }}>
-                  Koupit
-                </button>
+                  Vybrat balíček
+                </Link>
               </div>
             ))}
           </div>
@@ -383,12 +399,12 @@ export default function OsobniTestyPage() {
               justifyContent: 'center',
               flexWrap: 'wrap',
             }}>
-              <button className="btn btn-large" style={{
+              <Link href="/kontakt" className="btn btn-large" style={{
                 backgroundColor: 'white',
                 color: 'var(--color-secondary)',
               }}>
-                Koupit Osobní testy
-              </button>
+                Domluvit osobní testy
+              </Link>
               <Link href="/ukazkovy-test" className="btn btn-large" style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 border: '2px solid white',
@@ -405,4 +421,3 @@ export default function OsobniTestyPage() {
     </>
   )
 }
-
