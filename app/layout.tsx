@@ -18,14 +18,14 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: 'Přijímačky Společně' }],
     creator: 'Přijímačky Společně',
     publisher: 'Přijímačky Společně',
-    metadataBase: new URL('https://prijimacky-spolecne.cz'),
+    metadataBase: new URL('https://www.prijimackyspolecne.cz'),
     alternates: {
       canonical: homeSeo?.canonical || '/',
     },
     openGraph: {
       title: defaultTitle,
       description: defaultDescription,
-      url: 'https://www.prijimacky-spolecne.cz',
+      url: 'https://www.prijimackyspolecne.cz',
       siteName: 'Přijímačky Společně',
       images: [
         {
@@ -70,8 +70,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     "name": "Přijímačky Společně",
-    "url": "https://prijimacky-spolecne.cz",
-    "logo": "https://prijimacky-spolecne.cz/logo.webp",
+    "url": "https://www.prijimackyspolecne.cz",
+    "logo": "https://www.prijimackyspolecne.cz/logo.webp",
     "description": "Pomáháme dětem zvládnout přijímací zkoušky na střední školy i gymnázia s klidem.",
     "contactPoint": {
       "@type": "ContactPoint",

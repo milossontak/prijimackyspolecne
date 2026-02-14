@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
       <p>${message.replace(/\n/g, '<br>')}</p>
       <hr>
       <p style="font-size: 12px; color: #666;">
-        Tato zpráva byla odeslána z webu prijimacky-spolecne.cz
+        Tato zpráva byla odeslána z webu www.prijimackyspolecne.cz
         dne ${new Date().toLocaleString('cs-CZ')}
       </p>
     `

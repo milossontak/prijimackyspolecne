@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://prijimacky-spolecne.cz/sitemap.xml
+Sitemap: https://www.prijimackyspolecne.cz/sitemap.xml
 
 # Block common AI crawlers
 User-agent: GPTBot
