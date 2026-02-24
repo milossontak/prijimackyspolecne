@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { SiteContent } from '@/app/types'
 
 export default function ContentEditor() {
@@ -10,6 +10,7 @@ export default function ContentEditor() {
   const [message, setMessage] = useState('')
   const [activeSection, setActiveSection] = useState('metadata')
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({})
+  const saveTimeoutsRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({})
 
   // Načtení obsahu
   useEffect(() => {
@@ -19,6 +20,12 @@ export default function ContentEditor() {
   useEffect(() => {
     setExpandedItems((prev) => ({ ...prev, [activeSection]: true }))
   }, [activeSection])
+
+  useEffect(() => {
+    return () => {
+      Object.values(saveTimeoutsRef.current).forEach(clearTimeout)
+    }
+  }, [])
 
   const loadContent = async () => {
     try {
@@ -36,6 +43,28 @@ export default function ContentEditor() {
     }
   }
 
+  const parsePath = (path: string) => {
+    return path.match(/[^.[\]]+/g) || []
+  }
+
+  const updateLocalValue = (path: string, value: any) => {
+    setContent((prev) => {
+      if (!prev) return prev
+
+      const next = structuredClone(prev)
+      const keys = parsePath(path)
+      if (keys.length === 0) return next
+
+      let current: any = next
+      for (let i = 0; i < keys.length - 1; i++) {
+        current = current[keys[i]]
+      }
+
+      current[keys[keys.length - 1]] = value
+      return next
+    })
+  }
+
   // Uložení změny
   const saveValue = async (path: string, value: any) => {
     setSaving(true)
@@ -51,7 +80,6 @@ export default function ContentEditor() {
       const result = await response.json()
       if (result.success) {
         setMessage('Změna uložena!')
-        setContent(result.data)
       } else {
         setMessage('Chyba při ukládání')
       }
@@ -61,6 +89,19 @@ export default function ContentEditor() {
       setSaving(false)
       setTimeout(() => setMessage(''), 3000)
     }
+  }
+
+  const handleFieldChange = (path: string, value: any) => {
+    updateLocalValue(path, value)
+
+    if (saveTimeoutsRef.current[path]) {
+      clearTimeout(saveTimeoutsRef.current[path])
+    }
+
+    saveTimeoutsRef.current[path] = setTimeout(() => {
+      void saveValue(path, value)
+      delete saveTimeoutsRef.current[path]
+    }, 500)
   }
 
   // Vytvoření backupu
@@ -88,7 +129,7 @@ export default function ContentEditor() {
             </label>
             <textarea
               value={value}
-              onChange={(e) => saveValue(path, e.target.value)}
+              onChange={(e) => handleFieldChange(path, e.target.value)}
               style={{
                 width: '100%',
                 minHeight: '100px',
@@ -112,7 +153,7 @@ export default function ContentEditor() {
             <input
               type="text"
               value={value}
-              onChange={(e) => saveValue(path, e.target.value)}
+              onChange={(e) => handleFieldChange(path, e.target.value)}
               style={{
                 width: '100%',
                 padding: '0.5rem',
